@@ -1,0 +1,928 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>GARAJ Recepten</title><meta name="description" content="Recepten die ik zelf kook en steeds weer maak."><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap">
+<style>
+/* Layout: één oranje lijn loopt als ruggengraat links door de pagina en buigt met een kwartcirkel uit in elk donker vlak. */
+:root {
+  --bg: #F5F0E8; --surface: #FFFDF9; --ink: #171412; --muted: #6E655C;
+  --plane: #1C1917; --plane-ink: #F5EEE5;
+  --accent: #E2620B; --accent-soft: #F6D9C1; --rule: #E2D8CB;
+  /* kleur per gang */
+  --g-soep: #C8401A; --g-hoofdgerecht: #E2620B; --g-bijgerecht: #5F7F3A; --g-dessert: #B07A12;
+  --font: "Lato", Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+  --r-arc: 112px; --line: 2px; --pad: clamp(18px, 4vw, 48px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131110; --surface: #1C1A18; --ink: #F2ECE4; --muted: #A69B8F;
+    --plane: #24201D; --plane-ink: #F5EEE5; --accent: #F07A24; --accent-soft: #4A2C16; --rule: #34302C;
+    --g-soep: #E8693F; --g-hoofdgerecht: #F07A24; --g-bijgerecht: #94B064; --g-dessert: #DDA640;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131110; --surface: #1C1A18; --ink: #F2ECE4; --muted: #A69B8F;
+  --plane: #24201D; --plane-ink: #F5EEE5; --accent: #F07A24; --accent-soft: #4A2C16; --rule: #34302C;
+  --g-soep: #E8693F; --g-hoofdgerecht: #F07A24; --g-bijgerecht: #94B064; --g-dessert: #DDA640;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+img, svg { max-width: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.6; }
+h1, h2, h3 { line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.g-soep { --g: var(--g-soep); } .g-hoofdgerecht { --g: var(--g-hoofdgerecht); }
+.g-bijgerecht { --g: var(--g-bijgerecht); } .g-dessert { --g: var(--g-dessert); }
+.eyebrow { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--g, var(--accent)); }
+
+/* ---------- Kop en navigatie ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule); }
+.top-in { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
+.brand { font-weight: 900; letter-spacing: .28em; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand svg { width: 26px; height: 26px; }
+.nav { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0; }
+.nav a { display: block; text-decoration: none; padding: 8px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); background: var(--accent-soft); }
+.search-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule); background: none; display: grid; place-items: center; text-decoration: none; flex: none; }
+.search-btn svg { width: 18px; height: 18px; }
+@media (max-width: 480px) { .nav a { padding: 8px 10px; } .brand { letter-spacing: .18em; font-size: 18px; } }
+
+/* ---------- Ruggengraat met boog ---------- */
+.page { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 0 72px; }
+.spine { border-left: var(--line) solid var(--accent); padding-left: var(--pad); }
+.plane {
+  background: var(--plane); color: var(--plane-ink);
+  border-top: var(--line) solid var(--accent); border-left: var(--line) solid var(--accent);
+  border-top-left-radius: var(--r-arc);
+  margin-left: calc(-1 * var(--pad) - var(--line));
+  padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 56px) clamp(36px, 6vw, 56px) clamp(36px, 7vw, 96px);
+}
+@media (max-width: 600px) {
+  :root { --r-arc: 64px; --pad: 14px; }
+  .page { padding-inline: 12px; }
+  .plane { padding: 36px 16px 32px 20px; margin-right: -12px; }
+}
+
+/* ---------- Beeld: foto of geometrisch bord ---------- */
+.beeld { display: block; aspect-ratio: 1; width: 100%; max-width: 100%; }
+.beeld img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+.beeld svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Home ---------- */
+.hero { padding-block: clamp(32px, 8vw, 88px) clamp(28px, 6vw, 56px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.hero h1 { font-size: clamp(38px, 7vw, 76px); font-weight: 900; letter-spacing: -.01em; margin-top: 12px; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { font-size: clamp(17px, 2vw, 21px); font-weight: 300; max-width: 34ch; margin-top: 18px; color: var(--muted); }
+.hero-art { max-width: 340px; justify-self: end; width: 100%; color: var(--ink); }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; align-items: start; }
+  .hero-art { max-width: 96px; margin-top: 8px; }
+  .hero p.lead { grid-column: 1 / -1; }
+}
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; }
+.plane .section-head p { color: color-mix(in srgb, var(--plane-ink) 70%, transparent); max-width: 44ch; }
+
+.favs { display: grid; }
+.fav { display: grid; grid-template-columns: 128px minmax(0, 1fr) auto; gap: 28px; align-items: center; text-decoration: none; padding: 22px 0; border-top: 1px solid color-mix(in srgb, var(--plane-ink) 16%, transparent); color: var(--plane-ink); }
+.fav:first-child { border-top: 0; }
+.fav h3 { font-size: clamp(21px, 2.6vw, 28px); font-weight: 700; }
+.fav .note { margin-top: 6px; color: color-mix(in srgb, var(--plane-ink) 72%, transparent); max-width: 58ch; font-size: 16px; }
+.fav .go { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.fav:hover h3 { color: var(--accent); }
+@media (max-width: 600px) { .fav { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: start; } .fav .go { display: none; } }
+
+.block { padding-block: 56px 8px; }
+.course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.course { background: var(--surface); border: 1px solid var(--rule); border-radius: 0 0 0 56px; padding: 22px 22px 26px 28px; display: grid; gap: 10px; align-content: start; border-top: 4px solid var(--g); }
+.course > a { text-decoration: none; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.course > a strong { font-size: 21px; }
+.course > a span { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.course ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.course li a { text-decoration: none; color: var(--muted); font-size: 16px; }
+.course li a:hover { color: var(--g); }
+.course li a::before { content: ""; display: inline-block; width: 10px; height: 10px; border: 2px solid var(--g); border-right-color: transparent; border-bottom-color: transparent; border-radius: 50%; transform: rotate(-45deg); margin-right: 8px; }
+
+.newstrip { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- Recepten (overzicht) ---------- */
+.cat-head { padding-block: clamp(32px, 7vw, 64px) 24px; }
+.cat-head h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 900; margin-top: 10px; }
+.zoek { margin-top: 20px; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 6px 4px 18px; max-width: 520px; }
+.zoek:focus-within { border-color: var(--accent); }
+.zoek svg { width: 18px; height: 18px; flex: none; color: var(--muted); }
+.zoek input { flex: 1; min-width: 0; border: 0; background: none; font: inherit; color: var(--ink); padding: 10px 0; outline: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 700; color: var(--muted); text-decoration: none; }
+.chip:hover { color: var(--ink); border-color: var(--g, var(--accent)); }
+.chip[aria-pressed="true"] { background: var(--g, var(--accent)); border-color: var(--g, var(--accent)); color: #fff; }
+.chip.label { font-weight: 400; }
+.chip.label::before { content: "# "; opacity: .6; }
+.result { color: var(--muted); font-size: 15px; margin: 20px 0 16px; }
+.list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--rule); border-top-left-radius: 64px; text-decoration: none; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
+.card:hover { border-color: var(--g); }
+.card .art { background: var(--plane); padding: 22px; display: grid; place-items: center; color: var(--plane-ink); position: relative; }
+.card .art .beeld { width: 150px; }
+.card .body { padding: 18px 20px 22px; display: grid; gap: 6px; align-content: start; }
+.card h3 { font-size: 21px; font-weight: 700; }
+.card .meta { color: var(--muted); font-size: 14px; }
+.badge { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.card .badge { position: absolute; top: 14px; right: 14px; }
+.leeg { padding: 40px 0; color: var(--muted); }
+
+/* ---------- Recept ---------- */
+.crumbs { padding-top: 24px; font-size: 14px; }
+.crumbs a { text-decoration: none; font-weight: 700; color: var(--g); }
+.r-head { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: end; padding-block: 16px 32px; }
+.r-head h1 { font-size: clamp(34px, 6vw, 64px); font-weight: 900; margin-top: 10px; }
+.r-head .intro { margin-top: 16px; font-size: clamp(17px, 2vw, 19px); font-weight: 300; max-width: 60ch; }
+.r-art { color: var(--ink); }
+.r-art figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; text-align: center; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 15px; color: var(--muted); align-items: center; }
+.facts b { color: var(--ink); }
+.labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+@media (max-width: 680px) {
+  .r-head { grid-template-columns: minmax(0, 1fr) 84px; gap: 14px; align-items: start; }
+  .r-head .r-art { grid-row: 1; grid-column: 2; margin-top: 30px; }
+  .r-head .r-art figcaption { display: none; }
+}
+
+.tabs { display: none; gap: 6px; margin-bottom: 22px; background: color-mix(in srgb, var(--plane-ink) 10%, transparent); padding: 4px; border-radius: 999px; }
+.tabs button { flex: 1; border: 0; background: none; color: var(--plane-ink); padding: 10px; border-radius: 999px; font-weight: 700; }
+.tabs button[aria-selected="true"] { background: var(--accent); color: #fff; }
+.r-body { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
+.r-wrap .r-body h2 { font-size: 24px; font-weight: 900; margin-bottom: 16px; }
+@media (max-width: 860px) {
+  .tabs { display: flex; }
+  .r-body { grid-template-columns: minmax(0, 1fr); }
+  .r-body > [data-panel]:not(.actief) { display: none; }
+}
+.panel-ingr h3 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 22px 0 8px; }
+.servings { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--plane-ink) 22%, transparent); border-radius: 999px; width: fit-content; }
+.servings button { width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; }
+.servings button:disabled { opacity: .35; cursor: default; }
+.servings output { min-width: 7ch; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ingr { list-style: none; padding: 0; margin: 0; display: grid; }
+.ingr li label { display: grid; grid-template-columns: 22px 5.2em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid color-mix(in srgb, var(--plane-ink) 12%, transparent); cursor: pointer; align-items: baseline; }
+.ingr li.smaak label { grid-template-columns: 22px minmax(0, 1fr); }
+.ingr li.smaak .k { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: color-mix(in srgb, var(--plane-ink) 60%, transparent); }
+.ingr input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; transform: translateY(3px); }
+.ingr .q { font-weight: 700; font-variant-numeric: tabular-nums; }
+.ingr .x { color: color-mix(in srgb, var(--plane-ink) 60%, transparent); font-size: 15px; }
+.ingr li:has(input:checked) label { opacity: .45; text-decoration: line-through; }
+.tools { margin-top: 16px; font-size: 15px; color: color-mix(in srgb, var(--plane-ink) 72%, transparent); }
+.lijst-btn { margin-top: 20px; width: 100%; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); background: none; color: var(--plane-ink); border-radius: 999px; padding: 12px; font-weight: 700; }
+.lijst-btn:hover { border-color: var(--accent); }
+
+.steps-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.r-wrap .steps-head h2 { margin: 0; }
+.cook-btn { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 700; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; counter-reset: s; color: var(--ink); }
+.step { counter-increment: s; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 18px 18px 20px; background: var(--surface); border: 1px solid var(--rule); border-radius: 0 0 0 40px; cursor: pointer; }
+.step::before { content: counter(s); width: 40px; height: 40px; border-radius: 50%; border: var(--line) solid var(--accent); display: grid; place-items: center; font-weight: 900; color: var(--accent); }
+.step h3 { margin: 0 0 6px; font-size: 19px; }
+.step .t { display: inline-block; margin-left: 6px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.step.done { opacity: .5; }
+.step.done::before { content: "✓"; background: var(--accent); color: #fff; }
+.timer-btn { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: none; border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 700; color: var(--accent); }
+.timer-btn:hover { border-color: var(--accent); }
+.timer-btn svg { width: 14px; height: 14px; }
+.hint { font-size: 14px; margin-top: 12px; color: color-mix(in srgb, var(--plane-ink) 60%, transparent); }
+.tip { margin-top: 24px; padding: 20px 22px; border-left: var(--line) solid var(--accent); background: var(--accent-soft); color: var(--ink); border-radius: 0 0 40px 0; }
+.tip strong { display: block; margin-bottom: 4px; }
+
+.after { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 48px; }
+@media (max-width: 760px) { .after { grid-template-columns: minmax(0, 1fr); } }
+.after h2 { font-size: 22px; font-weight: 900; margin-bottom: 14px; }
+.bij { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.bij li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; }
+.bij .beeld { width: 48px; color: var(--ink); }
+.bij a { font-weight: 700; text-decoration: none; }
+.bij a:hover { color: var(--accent); }
+.bij .dot { width: 48px; height: 48px; border-radius: 50%; border: var(--line) solid var(--rule); border-top-color: var(--accent); }
+.pager { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: 40px; }
+.pager a { text-decoration: none; border: 1px solid var(--rule); border-radius: 0 0 0 32px; padding: 14px 18px; display: grid; gap: 2px; background: var(--surface); }
+.pager a:hover { border-color: var(--accent); }
+.pager a.next { text-align: right; border-radius: 0 0 32px 0; }
+.pager small { color: var(--muted); font-size: 13px; }
+.pager strong { font-size: 17px; }
+
+/* ---------- Over ---------- */
+.over { max-width: 62ch; padding-block: clamp(32px, 7vw, 64px); display: grid; gap: 16px; font-size: 19px; }
+.over h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 900; }
+
+/* ---------- Kookmodus ---------- */
+.cook { position: fixed; inset: 0; z-index: 50; background: var(--plane); color: var(--plane-ink); display: grid; grid-template-rows: auto 1fr auto; padding: calc(env(safe-area-inset-top, 0px) + 16px) 20px calc(env(safe-area-inset-bottom, 0px) + 20px); }
+.cook-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 900px; width: 100%; margin: 0 auto; }
+.cook-top button { background: none; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); border-radius: 999px; padding: 8px 16px; font-weight: 700; }
+.cook-main { max-width: 900px; width: 100%; margin: 0 auto; align-self: center; padding-left: clamp(20px, 5vw, 56px); border-left: var(--line) solid var(--accent); }
+.cook-main .eyebrow { margin-bottom: 14px; }
+.cook-main h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 900; margin-bottom: 18px; }
+.cook-main p { font-size: clamp(20px, 3vw, 30px); line-height: 1.45; font-weight: 300; max-width: 40ch; }
+.cook-main .timer-btn { font-size: 17px; padding: 10px 18px; margin-top: 22px; border-color: color-mix(in srgb, var(--plane-ink) 30%, transparent); }
+.cook-ing { margin-top: 20px; font-size: 16px !important; color: color-mix(in srgb, var(--plane-ink) 70%, transparent); }
+.cook-nav { display: flex; gap: 12px; max-width: 900px; width: 100%; margin: 0 auto; }
+.cook-nav button { flex: 1; padding: 16px; border-radius: 999px; font-weight: 700; font-size: 18px; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); background: none; }
+.cook-nav button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cook-nav button:disabled { opacity: .35; cursor: default; }
+.dots { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--plane-ink) 25%, transparent); }
+.dots i.on { background: var(--accent); }
+
+/* ---------- Timers en melding ---------- */
+.dock { position: fixed; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); z-index: 60; display: grid; gap: 8px; justify-items: end; }
+.tmr { display: flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bg); border-radius: 999px; padding: 8px 8px 8px 16px; font-size: 15px; box-shadow: 0 6px 24px rgb(0 0 0 / .25); max-width: calc(100vw - 32px); }
+.tmr b { font-variant-numeric: tabular-nums; font-size: 18px; }
+.tmr span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.tmr button { width: 30px; height: 30px; border-radius: 50%; border: 0; background: color-mix(in srgb, var(--bg) 18%, transparent); color: var(--bg); flex: none; }
+.tmr.klaar { background: var(--accent); color: #fff; }
+.tmr.klaar button { color: #fff; }
+@media (prefers-reduced-motion: no-preference) { .tmr.klaar { animation: puls 1s ease-in-out infinite; } }
+@keyframes puls { 50% { transform: scale(1.05); } }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); z-index: 70; background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+.copybox { width: 100%; min-height: 160px; margin-top: 12px; font: inherit; font-size: 14px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 10px; }
+
+footer { max-width: 1120px; margin: 0 auto; padding: 32px 20px 48px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+footer nav { display: flex; gap: 16px; }
+footer a { text-decoration: none; font-weight: 700; }
+footer a:hover { color: var(--accent); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card, .course, .fav h3, .step, .chip, .pager a { transition: border-color .2s, color .2s, opacity .2s, background .2s; }
+}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#home" aria-label="GARAJ, naar de startpagina">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 36 V20 A16 16 0 0 1 20 4 H36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="6" fill="var(--ink)"/></svg>
+      GARAJ
+    </a>
+    <ul class="nav" id="nav"></ul>
+    <a class="search-btn" href="#zoeken" aria-label="Zoek een recept">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="app" class="page"></main>
+
+<footer>
+  <span id="count"></span>
+  <nav id="footnav"></nav>
+</footer>
+
+<div class="cook" id="cook" hidden role="dialog" aria-modal="true" aria-label="Kookmodus">
+  <div class="cook-top">
+    <span class="eyebrow" id="cookTitle"></span>
+    <button id="cookClose">Sluiten</button>
+  </div>
+  <div class="cook-main" id="cookMain"></div>
+  <div>
+    <div class="dots" id="cookDots"></div>
+    <div class="cook-nav">
+      <button id="cookPrev">Vorige</button>
+      <button id="cookNext" class="primary">Volgende</button>
+    </div>
+  </div>
+</div>
+<div class="dock" id="dock" aria-live="polite"></div>
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+/* =====================================================================
+   OVER GARAJ. Laat leeg ("") om de pagina te verbergen.
+   Elke regel in de lijst wordt een alinea.
+   ===================================================================== */
+const OVER = [];
+
+/* =====================================================================
+   GANGEN. Een gang verschijnt pas zodra er een recept in staat.
+   ===================================================================== */
+const GANGEN = [
+  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen" },
+  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten" },
+  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten" },
+  { id: "dessert",      naam: "Desserts",               kort: "Desserts" }
+];
+
+/* LABELS: tweede ingang naast de gang. */
+const LABELS = {
+  "vooraf":      "vooraf te maken",
+  "barbecue":    "barbecue",
+  "vegetarisch": "vegetarisch",
+  "comfortfood": "comfortfood",
+  "pittig":      "pittig",
+  "laag-traag":  "laag en traag"
+};
+
+/* =====================================================================
+   RECEPTEN. Nieuw recept? Kopieer een blok en vul het in.
+   ingredienten: [hoeveelheid, eenheid, naam, toelichting]
+     hoeveelheid null + eenheid "" = komt in de regel "Naar smaak"
+     hoeveelheid null + eenheid "naar wens" = eigen regel zonder getal
+     hoeveelheid [1, 2] = van-tot
+   stappen: timer = minuten voor de kookwekker
+   foto: pad naar de foto (bijv. "img/bolognesesaus.jpg"); leeg = illustratie
+   toegevoegd: datum "JJJJ-MM-DD"; nieuw-label verschijnt 60 dagen
+   lekkerBij: slug van een ander recept, of vrije tekst
+   ===================================================================== */
+const RECEPTEN = [
+  {
+    slug: "griekse-witte-koolsalade",
+    titel: "Griekse witte koolsalade",
+    gang: "bijgerecht",
+    labels: ["vooraf", "barbecue", "vegetarisch"],
+    favoriet: true,
+    foto: "",
+    toegevoegd: "",
+    noot: "Na jarenlang experimenteren, weinig genieten en veel weggooien is het eindelijk gelukt. Heerlijk als het 30 graden is en de barbecue aan staat.",
+    intro: "Het basisrecept om witte kool op een Griekse manier te bereiden. Naar wens snijd je er nog een worteltje in julienne, wat paprika of komkommer bij.",
+    tijd: "± 3 dagen, waarvan 20 minuten werk",
+    porties: 1, portieWoord: ["kool", "kolen"],
+    benodigdheden: ["Vergiet", "Kom"],
+    onderdelen: [{ kop: null, items: [
+      [1, "", "witte kool", "vers en ongesneden"],
+      [6, "el", "azijn", "ik gebruik witte wijnazijn"],
+      [4, "el", "olijfolie"],
+      [2, "el", "zout"],
+      [1, "el", "suiker", "optioneel; ik laat hem weg, ik houd van zuur"],
+      [0.5, "l", "mineraalwater met bubbels"]
+    ]}],
+    stappen: [
+      { kop: "Snijden", tekst: "Snijd de kool door de helft en snijd het harde gedeelte er in een driehoek uit. Snijd de kool in de lengte in dunne stukken. Raspen kan ook, maar ongelijke stukjes vind ik juist lekker. Doe de kool in het vergiet." },
+      { kop: "Zouten en kneden", tijd: "5 min + 30 min uitlekken", timer: 30, timerNaam: "Kool uitlekken", tekst: "Strooi het zout over de kool en kneed het er 5 minuten stevig in. In kleinere porties kneden is minder zwaar en net zo effectief. Laat de kool een half uur uitlekken boven de gootsteen of een pan en gooi het vocht weg." },
+      { kop: "Aanmaken", tijd: "24 uur", tekst: "Giet de azijn, de olijfolie en eventueel de suiker over de kool. Kneed nog 2 minuten en zet de kool afgedekt 24 uur in de koelkast." },
+      { kop: "Mineraalwater", tijd: "minimaal 48 uur", tekst: "Je ruikt nu een sterke koolgeur en de kool smaakt erg zout. Dat hoort zo. Giet het mineraalwater erover, schep om met twee lepels en zet de kool minimaal 48 uur weg. Tot 5 dagen in de koelkast geeft het beste resultaat." }
+    ],
+    tip: "Na het mineraalwater verandert de geur snel. Blijf proeven. Te zout? Spoel de kool in het vergiet met koud water. Te zuur? Spoelen of een beetje suiker toevoegen.",
+    lekkerBij: ["Alles van de barbecue", "kip-paprikasch"]
+  },
+  {
+    slug: "bolognesesaus",
+    titel: "Bolognesesaus",
+    gang: "hoofdgerecht",
+    labels: ["comfortfood", "laag-traag"],
+    favoriet: true,
+    foto: "",
+    toegevoegd: "",
+    noot: "Het geheim zit in de tomatenpuree die je apart in de pan bakt, en in de pasta die je met een scheut kookwater door de saus roert.",
+    intro: "Een volle saus die minimaal een uur zachtjes trekt. Langer mag altijd, zolang alles onder vocht staat.",
+    tijd: "± 1 uur 20 min",
+    porties: 4, portieWoord: ["persoon", "personen"],
+    onderdelen: [{ kop: null, items: [
+      [400, "g", "gemengd gehakt"],
+      [1, "", "wortel"],
+      [1, "", "ui"],
+      [1, "", "stengel bladselderij"],
+      [[1, 2], "dl", "rode wijn", "fruitig"],
+      [1, "", "laurierblad"],
+      [0.5, "l", "runderbouillon"],
+      [null, "", "tomatenpuree"],
+      [null, "", "Italiaanse kruiden"],
+      [null, "", "olijfolie"]
+    ]}],
+    stappen: [
+      { kop: "Dichtschroeien en blussen", tekst: "Verhit een beetje olijfolie in een ruime pan. Bak het gehakt met Italiaanse kruiden tot het dichtgeschroeid is; niet rul bakken. Maak het gehakt tijdens het bakken los met een garde. Blus met de wijn en roer een paar minuten tot de alcohol verdampt is." },
+      { kop: "Groente en tomatenpuree", tijd: "± 9 min", timer: 9, timerNaam: "Groente en puree", tekst: "Voeg de fijngehakte wortel, ui en bladselderij toe en bak 2 minuten mee. Maak een plekje vrij in de pan en bak de tomatenpuree daar 2 minuten direct in de pan; zo wordt hij zoeter. Meng alles en bak nog 5 minuten op middelhoog vuur." },
+      { kop: "Laten trekken", tijd: "minimaal 1 uur", timer: 60, timerNaam: "Bolognese trekken", tekst: "Voeg runderbouillon toe tot alles onder staat. Leg het laurierblad erin en zet de deksel iets schuin op de pan. Laat minimaal een uur zachtjes trekken. Je kunt de saus uitbreiden met gezeefde tomaten of een potje arrabbiatasaus." }
+    ],
+    tip: "Lekker uit te breiden met champignons. Roer de spaghetti of andere pasta door de saus met een scheut kookwater van de pasta.",
+    lekkerBij: ["Spaghetti of andere pasta, met een scheut kookwater door de saus"]
+  },
+  {
+    slug: "kip-paprikasch",
+    titel: "Garaj's kip-paprikasch",
+    gang: "hoofdgerecht",
+    labels: ["comfortfood", "laag-traag"],
+    favoriet: true,
+    foto: "",
+    toegevoegd: "",
+    noot: "Mijn eigen special. Een gladde paprikasaus door de groenten te pureren, een uur laten intrekken en verse frieten erbij.",
+    intro: "Kip in een gladde saus van paprika, ui en flink wat paprikapoeder. Neem de tijd: laag vuur en om de vijf minuten roeren.",
+    tijd: "± 1 uur 45 min",
+    porties: 4, portieWoord: ["persoon", "personen"],
+    onderdelen: [
+      { kop: null, items: [
+        [800, "g", "kipfilet"],
+        [2, "", "rode paprika's"],
+        [2, "", "middelgrote uien"],
+        [3, "", "tenen knoflook"],
+        [2, "", "kipbouillonblokjes", "voor 1 liter bouillon"],
+        [1, "", "klein blikje tomatenpuree"],
+        [null, "naar wens", "verse peterselie"]
+      ]},
+      { kop: "Kruiden en verder", items: [
+        [null, "naar wens", "paprikapoeder", "flink"],
+        [null, "", "Vegeta"],
+        [null, "", "witte peper"],
+        [null, "", "kookroom"],
+        [null, "", "bloem om te binden"],
+        [null, "", "olijfolie, roomboter en Croma"]
+      ]}
+    ],
+    stappen: [
+      { kop: "Bouillon", tekst: "Maak 1 liter kipbouillon en laat hem afkoelen. Koud hoeft niet." },
+      { kop: "Kip aanbraden", tekst: "Snijd de kipfilet schoon en in blokjes. Kruid goed met Vegeta en witte peper. Bak de kip in Croma in een pan met een goede antiaanbaklaag. De kip hoeft niet gaar, wel mooi bruin van buiten. Laat afkoelen op een bord." },
+      { kop: "Groentepap", tijd: "± 15 min", timer: 15, timerNaam: "Groentepap", tekst: "Doe een beetje olijfolie en roomboter in dezelfde pan. Snijd de uien en paprika's grof en bak ze zacht zonder dat ze kleuren. Bak daarna de fijngesneden knoflook nog 5 minuten mee. Pureer alles met de staafmixer tot een gladde pap." },
+      { kop: "Samenvoegen en laten trekken", tijd: "minimaal 1 uur", timer: 60, timerNaam: "Paprikasch trekken", tekst: "Doe olijfolie in de pan met de kip en flink wat paprikapoeder en bak mee. Roer de tomatenpuree erdoor en bak 5 minuten door. Voeg de bouillon, de groentepap en de fijngesneden peterselie toe. Laat minimaal een uur intrekken op laag vuur en roer om de 5 minuten." },
+      { kop: "Binden en serveren", tekst: "Maak verse frieten erbij. Is de kip-paprikasch nog te waterig? Schud wat bloem door een zeefje boven de pan en roer tot de saus gebonden is." }
+    ],
+    tip: "De groentepap is het hart van dit gerecht. Laat de uien en paprika's echt zacht worden voordat je mixt.",
+    lekkerBij: ["Verse frieten", "griekse-witte-koolsalade"]
+  },
+  {
+    slug: "kip-boursin",
+    titel: "Kip boursin",
+    gang: "hoofdgerecht",
+    labels: ["comfortfood", "laag-traag"],
+    favoriet: false,
+    foto: "",
+    toegevoegd: "",
+    intro: "Kip die anderhalf uur zachtjes gaart in champignonsoep en wordt afgemaakt met Boursin, sambal en kookroom.",
+    tijd: "± 2 uur",
+    porties: 4, portieWoord: ["persoon", "personen"],
+    onderdelen: [{ kop: null, items: [
+      [800, "g", "kipfilet"],
+      [1, "l", "champignonsoep", "ik gebruik Unox"],
+      [2, "", "middelgrote uien"],
+      [1, "", "pakje Boursin", "150 g, knoflook en fijne kruiden"],
+      [null, "", "Vegeta"],
+      [null, "", "witte peper"],
+      [null, "", "sambal"],
+      [null, "", "kookroom"],
+      [null, "", "bloem om te binden"],
+      [null, "", "olie, roomboter en Croma"]
+    ]}],
+    stappen: [
+      { kop: "Kip aanbraden", tekst: "Snijd de kipfilet schoon en in blokjes. Kruid goed met Vegeta en witte peper. Bak de kip in Croma in een pan met een goede antiaanbaklaag. De kip hoeft niet gaar, wel mooi bruin van buiten. Laat afkoelen op een bord." },
+      { kop: "Uien", tekst: "Snijd de uien klein en bak ze in olie en roomboter. Ze mogen niet bruin worden, wel zacht. Voeg de kip weer toe." },
+      { kop: "Garen", tijd: "minimaal 1,5 uur", timer: 90, timerNaam: "Kip boursin garen", tekst: "Voeg de champignonsoep toe en laat alles op laag vuur minimaal anderhalf uur garen. Roer af en toe." },
+      { kop: "Afmaken", tekst: "Roer de Boursin door de saus tot hij helemaal gesmolten is. Voeg daarna een beetje sambal en kookroom toe. Bind eventueel met een beetje bloem." }
+    ],
+    lekkerBij: ["Rijst of verse frieten"]
+  },
+  {
+    slug: "servische-bonensoep",
+    titel: "Servische bonensoep",
+    gang: "soep",
+    labels: ["pittig", "comfortfood"],
+    favoriet: false,
+    foto: "",
+    toegevoegd: "",
+    intro: "Stevige soep met pittige Debrecener worst, witte bonen en paprika. Gebonden en afgemaakt met een scheut room.",
+    tijd: "± 45 min",
+    porties: 4, portieWoord: ["persoon", "personen"],
+    onderdelen: [
+      { kop: null, items: [
+        [null, "naar wens", "Debrecener worst", "pittige worst uit Hongarije en de Balkan"],
+        [1, "", "grote ui", "gesnipperd"],
+        [[1, 2], "", "preien", "gesneden, met veel groen"],
+        [2, "", "middelgrote wortels"],
+        [1, "", "teen knoflook", "in plakjes"],
+        [1, "", "rode paprika", "ontveld"],
+        [1, "", "aardappel", "in kleine blokjes"],
+        [200, "ml", "tomatensaus"],
+        [720, "g", "witte bonen in tomatensaus"],
+        [1, "", "kipbouillonblokje"]
+      ]},
+      { kop: "Kruiden en afmaken", items: [
+        [null, "", "Vegeta"],
+        [null, "", "paprikapoeder"],
+        [null, "", "chilipoeder"],
+        [null, "", "tijm"],
+        [null, "", "oregano"],
+        [null, "", "bloem"],
+        [null, "", "kookroom"]
+      ]}
+    ],
+    stappen: [
+      { kop: "Groente aanbakken", tekst: "Verhit olie in een soeppan. Bak de ui, prei, wortel, knoflook en paprika met Vegeta. De groente mag niet bruin worden; blus zo nodig met een scheut water." },
+      { kop: "Water, worst en kruiden", tekst: "Vul aan met water en voeg de worst in kleine plakjes toe, samen met de aardappel en de tomatensaus. Voeg paprikapoeder, chilipoeder, tijm en oregano toe en verkruimel het bouillonblokje erboven." },
+      { kop: "Bonen", tekst: "Voeg de bonen toe. Roer voorzichtig, zodat ze heel blijven." },
+      { kop: "Binden en afmaken", tekst: "Schud bloem door een zeefje boven de soep tot de vetoogjes weg zijn. Maak af met kookroom en laat 10 seconden opkoken." }
+    ],
+    lekkerBij: ["Vers brood"]
+  },
+  {
+    slug: "pittige-fetadip",
+    titel: "Pittige fetadip met geroosterde paprika",
+    gang: "soep",
+    labels: ["pittig", "vegetarisch", "vooraf"],
+    favoriet: false,
+    foto: "",
+    toegevoegd: "2026-10-10",
+    intro: "Romige, opgeklopte feta met Griekse yoghurt, geroosterde paprika en chilivlokken. In tien minuten klaar en ideaal als er onverwacht mensen aan tafel schuiven.",
+    tijd: "± 10 min",
+    porties: 1, portieWoord: ["kom", "kommen"],
+    benodigdheden: ["Keukenmachine", "Knoflookpers"],
+    onderdelen: [{ kop: null, items: [
+      [275, "g", "feta", "zo goed mogelijk, liefst Griekse feta uit het vat"],
+      [200, "g", "Griekse yoghurt"],
+      [1, "", "geroosterde rode paprika", "zelf geroosterd of uit een pot"],
+      [1, "", "teen knoflook"],
+      [2, "tl", "chilivlokken", "of 1 verse chilipeper"],
+      [2, "el", "olijfolie"]
+    ]}],
+    stappen: [
+      { kop: "Knoflook en paprika", tekst: "Pers de knoflook boven de keukenmachine, zodat hij fijn genoeg is na het mixen. Voeg de geroosterde paprika toe. Paprika uit een pot? Laat hem eerst goed uitlekken en dep hem droog, anders wordt de dip te dun." },
+      { kop: "Olie en chili", tekst: "Voeg de olijfolie en de chilivlokken toe en mix 10 seconden tot alles gemengd is." },
+      { kop: "Yoghurt", tekst: "Voeg de Griekse yoghurt toe en mix nog 10 seconden." },
+      { kop: "Feta", tekst: "Verkruimel de feta erboven en mix een laatste keer tot de dip glad en romig is. Niet te lang doordraaien; dan wordt feta korrelig." }
+    ],
+    tip: "Afgedekt in de koelkast 3 tot 4 dagen houdbaar, en nooit langer dan de datum van de yoghurt. Schep eruit met een schone lepel en giet een dun laagje olijfolie over de dip, dan droogt hij niet uit. Invriezen raad ik af: de dip wordt korrelig en waterig.",
+    lekkerBij: ["Vers pitabrood", "Rauwe groente zoals komkommer en wortel"]
+  }
+];
+
+/* ===================================================================== */
+const $ = s => document.querySelector(s);
+const app = $("#app");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const gangVan = id => GANGEN.find(g => g.id === id);
+const actieveGangen = () => GANGEN.filter(g => RECEPTEN.some(r => r.gang === g.id));
+const volgorde = () => actieveGangen().flatMap(g => RECEPTEN.filter(r => r.gang === g.id));
+const isNieuw = r => r.toegevoegd && (Date.now() - new Date(r.toegevoegd)) / 864e5 <= 60;
+const datum = d => new Date(d).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
+const ICON_KLOK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>`;
+
+/* Geometrisch bord per recept, in de kleur van de gang. */
+function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
+function plate(seed) {
+  let h = hash(seed); const rnd = () => ((h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0) / 4294967296);
+  const c = 100, rot = Math.floor(rnd() * 4) * 90;
+  const pt = (r, a) => [(c + r * Math.cos(a * Math.PI / 180)).toFixed(1), (c + r * Math.sin(a * Math.PI / 180)).toFixed(1)];
+  const arc = (r, a0, a1) => { const [x0, y0] = pt(r, a0), [x1, y1] = pt(r, a1); return `M${x0} ${y0} A${r} ${r} 0 ${a1 - a0 > 180 ? 1 : 0} 1 ${x1} ${y1}`; };
+  const seg = 60 + Math.floor(rnd() * 3) * 30, [sx, sy] = pt(92, seg);
+  const rings = [78, 60, 42].map((r, i) => {
+    const s = Math.floor(rnd() * 8) * 45, len = 90 + Math.floor(rnd() * 4) * 45;
+    return `<path d="${arc(r, s, s + len)}" fill="none" stroke="var(--g, var(--accent))" stroke-width="${i === 0 ? 3 : 2}" stroke-linecap="round" opacity="${1 - i * 0.25}"/>`;
+  }).join("");
+  return `<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="rotate(${rot} 100 100)">
+    <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-opacity=".18" stroke-width="1.5"/>
+    <path d="M100 100 L192 100 A92 92 0 0 1 ${sx} ${sy} Z" fill="var(--g, var(--accent))" opacity=".9"/>
+    ${rings}<circle cx="100" cy="100" r="14" fill="currentColor" opacity=".85"/></g></svg>`;
+}
+/* Foto als die er is, anders het bord. */
+function beeld(r, extra = "") {
+  const inner = r && r.foto ? `<img src="${esc(r.foto)}" alt="Sfeerbeeld van ${esc(r.titel)}" loading="lazy">` : plate(r ? r.slug : "garaj-home");
+  return `<span class="beeld ${r ? "g-" + r.gang : ""} ${extra}">${inner}</span>`;
+}
+
+function fmt(n) {
+  const frac = [[0.25, "¼"], [0.5, "½"], [0.75, "¾"], [1 / 3, "⅓"], [2 / 3, "⅔"]];
+  const whole = Math.floor(n + 1e-9), rest = n - whole;
+  if (rest < 0.05) return String(whole);
+  if (whole < 10) for (const [v, s] of frac) if (Math.abs(rest - v) < 0.05) return (whole ? whole : "") + s;
+  return (Math.round(n * 10) / 10).toLocaleString("nl-NL");
+}
+const qty = (q, f) => Array.isArray(q) ? `${fmt(q[0] * f)}–${fmt(q[1] * f)}` : fmt(q * f);
+const isSmaak = it => it[0] === null && !it[1];
+
+function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2200); }
+
+/* ---------- Navigatie ---------- */
+function renderNav(current) {
+  const items = [["home", "Favorieten"], ["recepten", "Recepten"]];
+  if (OVER.length) items.push(["over", "Over"]);
+  $("#nav").innerHTML = items.map(([id, t]) => `<li><a href="#${id}" ${id === current ? 'aria-current="page"' : ""}>${t}</a></li>`).join("");
+  $("#footnav").innerHTML = items.map(([id, t]) => `<a href="#${id}">${t}</a>`).join("");
+}
+
+/* ---------- Home ---------- */
+function home() {
+  const favs = RECEPTEN.filter(r => r.favoriet);
+  const nieuw = RECEPTEN.filter(isNieuw);
+  return `
+  <div class="spine">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Zelf gekookt, steeds weer gemaakt</div>
+        <h1>Weinig recepten.<br><span>Allemaal goed.</span></h1>
+      </div>
+      <div class="hero-art">${beeld(null)}</div>
+      <p class="lead">Geen eindeloze lijst, maar gerechten die ik zelf heb uitgeprobeerd en waar ik echt van geniet.</p>
+    </section>
+    ${nieuw.length ? `<section style="padding-bottom:28px"><div class="newstrip"><span class="badge">Nieuw</span>${nieuw.map(r => `<a class="chip" href="#${r.slug}">${esc(r.titel)}</a>`).join("")}</div></section>` : ""}
+    <section class="plane" aria-labelledby="fav-h">
+      <div class="section-head">
+        <h2 id="fav-h">Mijn favorieten</h2>
+        <p>De recepten die ik het vaakst maak, met een korte noot waarom.</p>
+      </div>
+      <div class="favs">
+        ${favs.map(r => `
+          <a class="fav g-${r.gang}" href="#${r.slug}">
+            ${beeld(r)}
+            <div><div class="eyebrow">${esc(gangVan(r.gang).kort)}</div><h3>${esc(r.titel)}</h3><p class="note">${esc(r.noot)}</p></div>
+            <span class="go">Naar recept →</span>
+          </a>`).join("")}
+      </div>
+    </section>
+    <section class="block" aria-labelledby="gang-h">
+      <div class="section-head"><h2 id="gang-h">Per gang</h2></div>
+      <div class="course-grid">
+        ${actieveGangen().map(g => {
+          const lijst = RECEPTEN.filter(r => r.gang === g.id);
+          return `<div class="course g-${g.id}">
+            <a href="#${g.id}"><strong>${esc(g.naam)}</strong><span>${lijst.length} →</span></a>
+            <ul>${lijst.map(r => `<li><a href="#${r.slug}">${esc(r.titel)}</a></li>`).join("")}</ul>
+          </div>`;
+        }).join("")}
+      </div>
+    </section>
+  </div>`;
+}
+
+/* ---------- Recepten met zoeken en filters ---------- */
+let filter = { gang: null, label: null, q: "" };
+function recepten() {
+  const gebruikteLabels = Object.keys(LABELS).filter(l => RECEPTEN.some(r => (r.labels || []).includes(l)));
+  return `
+  <div class="spine">
+    <section class="cat-head">
+      <div class="eyebrow">${RECEPTEN.length} recepten, allemaal zelf gekookt</div>
+      <h1>Recepten</h1>
+      <label class="zoek" for="zoekveld">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+        <input id="zoekveld" type="search" placeholder="Zoek op gerecht of ingrediënt, bijv. paprika" value="${esc(filter.q)}" autocomplete="off">
+      </label>
+      <div class="chips" role="group" aria-label="Gang">
+        <button class="chip" data-gang="" aria-pressed="${!filter.gang}">Alle gangen</button>
+        ${actieveGangen().map(g => `<button class="chip g-${g.id}" data-gang="${g.id}" aria-pressed="${filter.gang === g.id}">${esc(g.kort)}</button>`).join("")}
+      </div>
+      <div class="chips" role="group" aria-label="Label">
+        ${gebruikteLabels.map(l => `<button class="chip label" data-label="${l}" aria-pressed="${filter.label === l}">${esc(LABELS[l])}</button>`).join("")}
+      </div>
+    </section>
+    <p class="result" id="result" aria-live="polite"></p>
+    <div class="list" id="lijst"></div>
+  </div>`;
+}
+function tekstVan(r) {
+  return [r.titel, r.intro, ...(r.labels || []).map(l => LABELS[l]), ...r.onderdelen.flatMap(o => o.items.map(i => i[2]))].join(" ").toLowerCase();
+}
+function renderLijst() {
+  const q = filter.q.trim().toLowerCase();
+  const lijst = volgorde().filter(r =>
+    (!filter.gang || r.gang === filter.gang) &&
+    (!filter.label || (r.labels || []).includes(filter.label)) &&
+    (!q || q.split(/\s+/).every(w => tekstVan(r).includes(w))));
+  const delen = [filter.gang && gangVan(filter.gang).naam.toLowerCase(), filter.label && `#${LABELS[filter.label]}`, q && `"${filter.q.trim()}"`].filter(Boolean);
+  $("#result").textContent = `${lijst.length} ${lijst.length === 1 ? "recept" : "recepten"}${delen.length ? " · " + delen.join(" · ") : ""}`;
+  $("#lijst").innerHTML = lijst.length ? lijst.map(r => `
+    <a class="card g-${r.gang}" href="#${r.slug}">
+      <div class="art">${beeld(r)}${isNieuw(r) ? '<span class="badge">Nieuw</span>' : ""}</div>
+      <div class="body"><div class="eyebrow">${esc(gangVan(r.gang).kort)}</div><h3>${esc(r.titel)}</h3><p class="meta">${esc(r.tijd || "")}</p><p>${esc(r.intro)}</p></div>
+    </a>`).join("") : `<p class="leeg">Geen recept gevonden. Probeer een ander woord of zet de filters uit.</p>`;
+}
+function bindRecepten(focus) {
+  renderLijst();
+  const z = $("#zoekveld");
+  z.oninput = () => { filter.q = z.value; renderLijst(); };
+  document.querySelectorAll("[data-gang]").forEach(b => b.onclick = () => {
+    filter.gang = b.dataset.gang || null;
+    document.querySelectorAll("[data-gang]").forEach(x => x.setAttribute("aria-pressed", String((x.dataset.gang || null) === filter.gang)));
+    renderLijst();
+  });
+  document.querySelectorAll("[data-label]").forEach(b => b.onclick = () => {
+    filter.label = filter.label === b.dataset.label ? null : b.dataset.label;
+    document.querySelectorAll("[data-label]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.label === filter.label)));
+    renderLijst();
+  });
+  if (focus) z.focus();
+}
+
+/* ---------- Recept ---------- */
+let huidig = null, factor = 1;
+function recept(r) {
+  huidig = r; factor = 1;
+  const g = gangVan(r.gang), alle = volgorde(), i = alle.indexOf(r);
+  const vorig = alle[i - 1], volgend = alle[i + 1];
+  const bij = (r.lekkerBij || []).map(x => RECEPTEN.find(y => y.slug === x) || x);
+  return `
+  <div class="spine r-wrap g-${r.gang}">
+    <p class="crumbs"><a href="#${g.id}">← ${esc(g.naam)}</a></p>
+    <section class="r-head">
+      <div>
+        <div class="eyebrow">${esc(g.kort)}${isNieuw(r) ? ' <span class="badge" style="margin-left:8px">Nieuw</span>' : ""}</div>
+        <h1>${esc(r.titel)}</h1>
+        <p class="intro">${esc(r.intro)}</p>
+        <div class="facts">
+          ${r.tijd ? `<span>Tijd <b>${esc(r.tijd)}</b></span>` : ""}
+          <span>Stappen <b>${r.stappen.length}</b></span>
+          ${r.toegevoegd ? `<span>Toegevoegd <b>${datum(r.toegevoegd)}</b></span>` : ""}
+        </div>
+        ${(r.labels || []).length ? `<div class="labels">${r.labels.map(l => `<a class="chip label" href="#label-${l}">${esc(LABELS[l])}</a>`).join("")}</div>` : ""}
+      </div>
+      <figure class="r-art" style="margin:0">${beeld(r)}${r.foto ? "<figcaption>Sfeerbeeld, gemaakt met AI</figcaption>" : ""}</figure>
+    </section>
+    <section class="plane">
+      <div class="tabs" role="tablist" aria-label="Recept">
+        <button role="tab" data-tab="ingr" aria-selected="true">Ingrediënten</button>
+        <button role="tab" data-tab="bereiding" aria-selected="false">Bereiding</button>
+      </div>
+      <div class="r-body">
+        <div class="panel-ingr actief" data-panel="ingr">
+          <h2>Ingrediënten</h2>
+          <div class="servings" role="group" aria-label="Aantal porties">
+            <button id="minder" aria-label="Minder">−</button>
+            <output id="portie" aria-live="polite"></output>
+            <button id="meer" aria-label="Meer">+</button>
+          </div>
+          <div id="ingr"></div>
+          ${r.benodigdheden ? `<p class="tools"><b>Benodigdheden:</b> ${r.benodigdheden.map(esc).join(", ")}</p>` : ""}
+          <button class="lijst-btn" id="kopieer">Kopieer boodschappenlijst</button>
+          <div id="copyfallback"></div>
+        </div>
+        <div data-panel="bereiding">
+          <div class="steps-head">
+            <h2>Bereiding</h2>
+            <button class="cook-btn" id="cookOpen">Start kookmodus</button>
+          </div>
+          <ol class="steps">
+            ${r.stappen.map((s, i) => `
+              <li class="step" data-i="${i}" tabindex="0">
+                <div><h3>${esc(s.kop)}${s.tijd ? `<span class="t">${esc(s.tijd)}</span>` : ""}</h3><p>${esc(s.tekst)}</p>
+                ${s.timer ? `<button class="timer-btn" data-timer="${i}">${ICON_KLOK} Wekker ${s.timer} min</button>` : ""}</div>
+              </li>`).join("")}
+          </ol>
+          <p class="hint">Tik op een stap om hem af te vinken.</p>
+          ${r.tip ? `<div class="tip"><strong>Tip</strong>${esc(r.tip)}</div>` : ""}
+        </div>
+      </div>
+    </section>
+    ${bij.length ? `<section class="after"><div>
+      <h2>Lekker bij</h2>
+      <ul class="bij">${bij.map(b => typeof b === "string"
+        ? `<li><span class="dot"></span><span>${esc(b)}</span></li>`
+        : `<li class="g-${b.gang}">${beeld(b)}<a href="#${b.slug}">${esc(b.titel)} →</a></li>`).join("")}</ul>
+    </div></section>` : ""}
+    <nav class="pager" aria-label="Andere recepten">
+      ${vorig ? `<a href="#${vorig.slug}"><small>← Vorig recept</small><strong>${esc(vorig.titel)}</strong></a>` : "<span></span>"}
+      ${volgend ? `<a class="next" href="#${volgend.slug}"><small>Volgend recept →</small><strong>${esc(volgend.titel)}</strong></a>` : "<span></span>"}
+    </nav>
+  </div>`;
+}
+
+function renderIngr() {
+  const r = huidig, n = r.porties * factor;
+  $("#portie").textContent = `${fmt(n)} ${n === 1 ? r.portieWoord[0] : r.portieWoord[1]}`;
+  $("#minder").disabled = factor <= 0.5 + 1e-9;
+  const checked = new Set([...document.querySelectorAll("#ingr input:checked")].map(i => i.id));
+  $("#ingr").innerHTML = r.onderdelen.map((o, oi) => {
+    const vast = o.items.filter(it => !isSmaak(it)), smaak = o.items.filter(isSmaak);
+    const idS = `s-${oi}`;
+    return `${o.kop ? `<h3>${esc(o.kop)}</h3>` : ""}
+    <ul class="ingr">${vast.map(([q, u, naam, x], ii) => {
+      const id = `i-${oi}-${ii}`;
+      const hoeveel = q === null ? u : `${qty(q, factor)}${u ? " " + u : ""}`;
+      return `<li><label for="${id}"><input type="checkbox" id="${id}" ${checked.has(id) ? "checked" : ""}>
+        <span class="q">${esc(hoeveel)}</span>
+        <span>${esc(naam)}${x ? `<br><span class="x">${esc(x)}</span>` : ""}</span></label></li>`;
+    }).join("")}
+    ${smaak.length ? `<li class="smaak"><label for="${idS}"><input type="checkbox" id="${idS}" ${checked.has(idS) ? "checked" : ""}>
+      <span><span class="k">Naar smaak</span>${smaak.map(i => esc(i[2])).join(" · ")}</span></label></li>` : ""}
+    </ul>`;
+  }).join("");
+}
+
+function boodschappen() {
+  const r = huidig, n = r.porties * factor;
+  const regels = [`${r.titel} (${fmt(n)} ${n === 1 ? r.portieWoord[0] : r.portieWoord[1]})`];
+  r.onderdelen.forEach(o => o.items.forEach(([q, u, naam]) => {
+    regels.push(`- ${q === null ? "" : qty(q, factor) + (u ? " " + u : "") + " "}${naam}`);
+  }));
+  return regels.join("\n");
+}
+
+function bindRecept() {
+  renderIngr();
+  const stap = huidig.porties === 1 ? 0.5 : 1 / huidig.porties;
+  $("#minder").onclick = () => { factor = Math.max(0.5, factor - stap); renderIngr(); };
+  $("#meer").onclick = () => { factor += stap; renderIngr(); };
+  document.querySelectorAll(".step").forEach(el => {
+    const t = e => { if (e.target.closest(".timer-btn")) return; el.classList.toggle("done"); };
+    el.onclick = t; el.onkeydown = e => { if (e.target === el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); t(e); } };
+  });
+  document.querySelectorAll("[data-timer]").forEach(b => b.onclick = () => startTimer(huidig.stappen[+b.dataset.timer]));
+  $("#cookOpen").onclick = () => openCook(0);
+  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => {
+    document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", String(x === b)));
+    document.querySelectorAll("[data-panel]").forEach(p => p.classList.toggle("actief", p.dataset.panel === b.dataset.tab));
+  });
+  $("#kopieer").onclick = () => {
+    const tekst = boodschappen();
+    const fallback = () => {
+      $("#copyfallback").innerHTML = `<textarea class="copybox" id="copybox" readonly aria-label="Boodschappenlijst">${esc(tekst)}</textarea>`;
+      const ta = $("#copybox"); ta.focus(); ta.select();
+      toast("Selecteer en kopieer de lijst");
+    };
+    try { navigator.clipboard.writeText(tekst).then(() => toast("Boodschappenlijst gekopieerd"), fallback); } catch (e) { fallback(); }
+  };
+}
+
+/* ---------- Kookwekkers ---------- */
+const timers = [];
+let tick = null, audio = null;
+function startTimer(s) {
+  try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); audio.resume(); } catch (e) {}
+  timers.push({ id: Date.now() + Math.random(), naam: s.timerNaam || s.kop, eind: Date.now() + s.timer * 60000, klaar: false });
+  toast(`Wekker gezet: ${s.timer} min`);
+  drawDock(); if (!tick) tick = setInterval(drawDock, 1000);
+}
+function piep() {
+  if (!audio) return;
+  try {
+    [0, 0.35, 0.7].forEach(t => {
+      const o = audio.createOscillator(), g = audio.createGain();
+      o.frequency.value = 880; o.connect(g); g.connect(audio.destination);
+      g.gain.setValueAtTime(0.25, audio.currentTime + t); g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + t + 0.3);
+      o.start(audio.currentTime + t); o.stop(audio.currentTime + t + 0.3);
+    });
+  } catch (e) {}
+  try { navigator.vibrate?.([300, 150, 300]); } catch (e) {}
+}
+function drawDock() {
+  const nu = Date.now();
+  timers.forEach(t => { if (!t.klaar && nu >= t.eind) { t.klaar = true; piep(); } });
+  $("#dock").innerHTML = timers.map(t => {
+    const rest = Math.max(0, Math.round((t.eind - nu) / 1000));
+    const tijd = t.klaar ? "Klaar!" : `${Math.floor(rest / 3600) ? Math.floor(rest / 3600) + ":" : ""}${String(Math.floor(rest / 60) % 60).padStart(2, "0")}:${String(rest % 60).padStart(2, "0")}`;
+    return `<div class="tmr ${t.klaar ? "klaar" : ""}"><span>${esc(t.naam)}</span><b>${tijd}</b><button data-stop="${t.id}" aria-label="Wekker ${esc(t.naam)} stoppen">✕</button></div>`;
+  }).join("");
+  document.querySelectorAll("[data-stop]").forEach(b => b.onclick = () => {
+    timers.splice(timers.findIndex(t => String(t.id) === b.dataset.stop), 1); drawDock();
+  });
+  if (!timers.length) { clearInterval(tick); tick = null; }
+}
+
+/* ---------- Kookmodus ---------- */
+let stap = 0, lock = null;
+async function openCook(i) {
+  stap = i; $("#cook").hidden = false; document.body.style.overflow = "hidden"; drawCook();
+  try { lock = await navigator.wakeLock?.request("screen"); } catch (e) { lock = null; }
+  $("#cookNext").focus();
+}
+function closeCook() {
+  $("#cook").hidden = true; document.body.style.overflow = "";
+  try { lock?.release(); } catch (e) {} lock = null;
+}
+function drawCook() {
+  const r = huidig, s = r.stappen[stap];
+  $("#cookTitle").textContent = r.titel;
+  const namen = r.onderdelen.flatMap(o => o.items.map(i => i[2]));
+  const gebruikt = namen.filter(n => s.tekst.toLowerCase().includes(n.split(" ").slice(-1)[0].toLowerCase().replace(/'s$/, "")));
+  $("#cookMain").innerHTML = `
+    <div class="eyebrow">Stap ${stap + 1} van ${r.stappen.length}${s.tijd ? " · " + esc(s.tijd) : ""}</div>
+    <h2>${esc(s.kop)}</h2>
+    <p>${esc(s.tekst)}</p>
+    ${s.timer ? `<button class="timer-btn" id="cookTimer">${ICON_KLOK} Start wekker ${s.timer} min</button>` : ""}
+    ${gebruikt.length ? `<p class="cook-ing">Je gebruikt: ${gebruikt.map(esc).join(", ")}</p>` : ""}`;
+  if (s.timer) $("#cookTimer").onclick = () => startTimer(s);
+  $("#cookDots").innerHTML = r.stappen.map((_, i) => `<i class="${i <= stap ? "on" : ""}"></i>`).join("");
+  $("#cookPrev").disabled = stap === 0;
+  $("#cookNext").textContent = stap === r.stappen.length - 1 ? "Klaar, eet smakelijk" : "Volgende";
+}
+$("#cookPrev").onclick = () => { if (stap > 0) { stap--; drawCook(); } };
+$("#cookNext").onclick = () => { if (stap < huidig.stappen.length - 1) { stap++; drawCook(); } else closeCook(); };
+$("#cookClose").onclick = closeCook;
+document.addEventListener("keydown", e => {
+  if ($("#cook").hidden) return;
+  if (e.key === "ArrowRight") $("#cookNext").click();
+  if (e.key === "ArrowLeft") $("#cookPrev").click();
+  if (e.key === "Escape") closeCook();
+});
+
+/* ---------- Over ---------- */
+function over() {
+  return `<div class="spine"><section class="over"><div class="eyebrow">Over</div><h1>GARAJ</h1>${OVER.map(p => `<p>${esc(p)}</p>`).join("")}</section></div>`;
+}
+
+/* ---------- Router ---------- */
+function route() {
+  const id = (location.hash || "#home").slice(1);
+  const r = RECEPTEN.find(x => x.slug === id);
+  if (!$("#cook").hidden) closeCook();
+  if (r) { renderNav("recepten"); app.innerHTML = recept(r); bindRecept(); document.title = `${r.titel} · GARAJ`; }
+  else if (id === "recepten" || id === "zoeken" || gangVan(id) || id.startsWith("label-")) {
+    filter = { gang: gangVan(id) ? id : null, label: id.startsWith("label-") && LABELS[id.slice(6)] ? id.slice(6) : null, q: "" };
+    renderNav("recepten"); app.innerHTML = recepten(); bindRecepten(id === "zoeken"); document.title = "Recepten · GARAJ";
+  }
+  else if (id === "over" && OVER.length) { renderNav("over"); app.innerHTML = over(); document.title = "Over · GARAJ"; }
+  else { renderNav("home"); app.innerHTML = home(); document.title = "GARAJ Recepten"; }
+  window.scrollTo(0, 0);
+}
+$("#count").textContent = `GARAJ · ${RECEPTEN.length} recepten, allemaal zelf gekookt`;
+window.addEventListener("hashchange", route);
+route();
+</script>
+
+</body></html>
