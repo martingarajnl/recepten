@@ -659,7 +659,7 @@ function home() {
           const lijst = RECEPTEN.filter(r => r.gang === g.id);
           return `<div class="course g-${g.id}">
             ${g.foto ? `<img class="g-foto" src="${esc(g.foto)}" alt="" loading="lazy">` : ""}
-            <a href="#${g.id}"><strong>${esc(g.naam)}</strong><span>${lijst.length} →</span></a>
+            <a href="#${g.id}"><strong>${esc(g.naam)}</strong><span>→</span></a>
             <ul>${lijst.map(r => `<li><a href="#${r.slug}">${esc(r.titel)}</a></li>`).join("")}</ul>
           </div>`;
         }).join("")}
@@ -676,7 +676,7 @@ function recepten() {
   <div class="spine">
     <section class="cat-head met-foto">
       <div class="cat-tekst">
-      <div class="eyebrow">${RECEPTEN.length} recepten, allemaal zelf gekookt</div>
+      <div class="eyebrow">Allemaal zelf gekookt</div>
       <h1>Recepten</h1>
       <label class="zoek" for="zoekveld">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
@@ -706,7 +706,7 @@ function renderLijst() {
     (!filter.label || (r.labels || []).includes(filter.label)) &&
     (!q || q.split(/\s+/).every(w => tekstVan(r).includes(w))));
   const delen = [filter.gang && gangVan(filter.gang).naam.toLowerCase(), filter.label && `#${LABELS[filter.label]}`, q && `"${filter.q.trim()}"`].filter(Boolean);
-  $("#result").textContent = `${lijst.length} ${lijst.length === 1 ? "recept" : "recepten"}${delen.length ? " · " + delen.join(" · ") : ""}`;
+  $("#result").textContent = delen.length ? "Gefilterd op " + delen.join(" · ") : "";
   $("#lijst").innerHTML = lijst.length ? lijst.map(r => `
     <a class="card g-${r.gang}" href="#${r.slug}">
       <div class="art">${beeld(r)}${isNieuw(r) ? '<span class="badge">Nieuw</span>' : ""}</div>
@@ -950,7 +950,7 @@ function route() {
   else { renderNav("home"); app.innerHTML = home(); document.title = "GARAJ Recepten"; }
   window.scrollTo(0, 0);
 }
-$("#count").textContent = `GARAJ · ${RECEPTEN.length} recepten, allemaal zelf gekookt`;
+$("#count").textContent = "GARAJ · Allemaal zelf gekookt";
 window.addEventListener("hashchange", route);
 route();
 </script>
