@@ -513,33 +513,46 @@ const RECEPTEN = [
     lekkerBij: ["Vers brood"]
   },
   {
-    slug: "pittige-fetadip",
-    titel: "Pittige fetadip met geroosterde paprika",
+    slug: "grieks-knoflookbrood-fetadip",
+    titel: "Grieks knoflookbrood met pittige paprika-fetadip",
     gang: "soep",
-    labels: ["pittig", "vegetarisch", "vooraf"],
+    labels: ["pittig", "vegetarisch"],
     favoriet: false,
     foto: "",
     toegevoegd: "2026-10-10",
-    intro: "Romige, opgeklopte feta met Griekse yoghurt, geroosterde paprika en chilivlokken. In tien minuten klaar en ideaal als er onverwacht mensen aan tafel schuiven.",
-    tijd: "± 10 min",
-    porties: 1, portieWoord: ["kom", "kommen"],
-    benodigdheden: ["Keukenmachine", "Knoflookpers"],
-    onderdelen: [{ kop: null, items: [
-      [275, "g", "feta", "zo goed mogelijk, liefst Griekse feta uit het vat"],
-      [200, "g", "Griekse yoghurt"],
-      [1, "", "geroosterde rode paprika", "zelf geroosterd of uit een pot"],
-      [1, "", "teen knoflook"],
-      [2, "tl", "chilivlokken", "of 1 verse chilipeper"],
-      [2, "el", "olijfolie"]
-    ]}],
-    stappen: [
-      { kop: "Knoflook en paprika", tekst: "Pers de knoflook boven de keukenmachine, zodat hij fijn genoeg is na het mixen. Voeg de geroosterde paprika toe. Paprika uit een pot? Laat hem eerst goed uitlekken en dep hem droog, anders wordt de dip te dun." },
-      { kop: "Olie en chili", tekst: "Voeg de olijfolie en de chilivlokken toe en mix 10 seconden tot alles gemengd is." },
-      { kop: "Yoghurt", tekst: "Voeg de Griekse yoghurt toe en mix nog 10 seconden." },
-      { kop: "Feta", tekst: "Verkruimel de feta erboven en mix een laatste keer tot de dip glad en romig is. Niet te lang doordraaien; dan wordt feta korrelig." }
+    intro: "Knapperige ciabatta met boter van geroosterde knoflook, met daarbij een romige dip van feta, Griekse yoghurt, geroosterde paprika en chilivlokken. Terwijl de knoflook in de oven zit, maak je de dip.",
+    tijd: "± 45 min, waarvan 20 minuten werk",
+    porties: 1, portieWoord: ["schaal", "schalen"],
+    benodigdheden: ["Keukenmachine", "Knoflookpers", "Bakblik met bakpapier", "Kom"],
+    onderdelen: [
+      { kop: "Pittige paprika-fetadip", items: [
+        [275, "g", "feta", "zo goed mogelijk, liefst Griekse feta uit het vat"],
+        [200, "g", "Griekse yoghurt"],
+        [1, "", "geroosterde rode paprika", "zelf geroosterd of uit een pot"],
+        [1, "", "teen knoflook"],
+        [2, "tl", "chilivlokken", "of 1 verse chilipeper"],
+        [2, "el", "olijfolie"]
+      ]},
+      { kop: "Knoflookbrood", items: [
+        [1, "", "afbakciabatta"],
+        [100, "g", "ongezouten roomboter", "op kamertemperatuur"],
+        [0.5, "", "bol knoflook", "tenen ongepeld"],
+        [null, "naar wens", "verse peterselie", "een paar takjes, fijngehakt"],
+        [1, "tl", "cayennepeper"],
+        [null, "", "zeezout uit de molen"]
+      ]}
     ],
-    tip: "Afgedekt in de koelkast 3 tot 4 dagen houdbaar, en nooit langer dan de datum van de yoghurt. Schep eruit met een schone lepel en giet een dun laagje olijfolie over de dip, dan droogt hij niet uit. Invriezen raad ik af: de dip wordt korrelig en waterig.",
-    lekkerBij: ["Vers pitabrood", "Rauwe groente zoals komkommer en wortel"]
+    stappen: [
+      { kop: "Knoflook roosteren", tijd: "20–25 min", timer: 25, timerNaam: "Knoflook roosteren", tekst: "Verwarm de oven voor op 200 °C. Leg de ongepelde knoflooktenen op het bakblik met bakpapier en rooster ze in het midden van de oven tot de schil kleurt en de knoflook binnenin zacht is. Maak intussen de dip." },
+      { kop: "Dip: knoflook en paprika", tekst: "Pers de verse teen knoflook boven de keukenmachine, zodat hij fijn genoeg is na het mixen. Voeg de geroosterde paprika toe. Paprika uit een pot? Laat hem eerst goed uitlekken en dep hem droog, anders wordt de dip te dun." },
+      { kop: "Dip: olie, chili en yoghurt", tekst: "Voeg de olijfolie en de chilivlokken toe en mix 10 seconden. Voeg de Griekse yoghurt toe en mix nog 10 seconden." },
+      { kop: "Dip: feta", tekst: "Verkruimel de feta erboven en mix een laatste keer tot de dip glad en romig is. Niet te lang doordraaien; dan wordt feta korrelig. Zet de dip afgedekt in de koelkast tot het brood klaar is." },
+      { kop: "Knoflookboter", tekst: "Roer de roomboter los in een kom. Knijp de geroosterde knoflook uit de schil en voeg hem met de peterselie toe. Prak de knoflook fijn en roer alles goed door elkaar. Breng op smaak met cayennepeper en zeezout." },
+      { kop: "Brood bakken", tijd: "8–10 min", timer: 10, timerNaam: "Knoflookbrood bakken", tekst: "Snijd de ciabatta in plakken en smeer ze royaal in met de knoflookboter. Leg ze op het bakblik en bak ze in het midden van de oven goudbruin en knapperig." },
+      { kop: "Serveren", tekst: "Schep de dip in een schaal, giet er een scheutje olijfolie over en strooi er eventueel wat extra chilivlokken op. Serveer met het warme knoflookbrood." }
+    ],
+    tip: "De dip kun je een dag van tevoren maken; afgedekt in de koelkast blijft hij 3 tot 4 dagen goed, maar nooit langer dan de datum van de yoghurt. Invriezen raad ik af. Het brood kun je ook vooraf smeren en koel bewaren; warm het op in een voorverwarmde oven, afgedekt met aluminiumfolie.",
+    lekkerBij: ["Een borrelplank met olijven", "griekse-witte-koolsalade"]
   }
 ];
 
