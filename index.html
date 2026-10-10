@@ -1,4 +1,4 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>GARAJ Recepten</title><meta name="description" content="Recepten die ik zelf kook en steeds weer maak."><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#F5F0E8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>GARAJ Recepten</title><meta name="description" content="Recepten die ik zelf kook en steeds weer maak."><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#F5F0E8"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GARAJ"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap">
@@ -259,6 +259,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .tmr.klaar button { color: #fff; }
 @media (prefers-reduced-motion: no-preference) { .tmr.klaar { animation: puls 1s ease-in-out infinite; } }
 @keyframes puls { 50% { transform: scale(1.05); } }
+.installbalk { position: fixed; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 60; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto auto; gap: 12px; align-items: center; background: var(--plane); color: var(--plane-ink); border-top: var(--line) solid var(--accent); border-radius: 0 0 0 32px; padding: 12px 12px 12px 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: 560px; margin: 0 auto; }
+.installbalk img { width: 48px; height: 48px; border-radius: 12px; display: block; }
+.ib-tekst { display: grid; gap: 2px; font-size: 14px; line-height: 1.35; }
+.ib-tekst strong { font-size: 15px; }
+.ib-tekst span { color: color-mix(in srgb, var(--plane-ink) 75%, transparent); }
+.ib-ja { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 9px 16px; font-weight: 700; white-space: nowrap; }
+.ib-nee { background: none; border: 0; color: var(--plane-ink); opacity: .7; width: 36px; height: 36px; font-size: 16px; }
+.installbalk.ios { grid-template-columns: 48px minmax(0, 1fr) auto; }
+.installbalk.ios .ib-ja { display: none; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); z-index: 70; background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: 15px; }
 .copybox { width: 100%; min-height: 160px; margin-top: 12px; font: inherit; font-size: 14px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 10px; }
 
@@ -308,6 +317,12 @@ footer a:hover { color: var(--accent); }
 </div>
 <div class="dock" id="dock" aria-live="polite"></div>
 <div class="toast" id="toast" hidden role="status"></div>
+<aside class="installbalk" id="installbalk" hidden aria-label="GARAJ als app installeren">
+  <img src="icon-192.png" alt="" width="48" height="48">
+  <div class="ib-tekst"><strong>GARAJ op je beginscherm</strong><span id="ibUitleg">Open de recepten met één tik, net als een app.</span></div>
+  <button class="ib-ja" id="ibJa" type="button">Installeren</button>
+  <button class="ib-nee" id="ibNee" type="button" aria-label="Niet nu">✕</button>
+</aside>
 
 <script>
 /* =====================================================================
@@ -953,6 +968,44 @@ function route() {
 $("#count").textContent = "GARAJ · Allemaal zelf gekookt";
 window.addEventListener("hashchange", route);
 route();
+
+/* ---------- App: installeren op het beginscherm ---------- */
+(() => {
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
+  const balk = $("#installbalk");
+  const opslag = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  const alGeinstalleerd = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const isMobiel = matchMedia("(max-width: 900px) and (pointer: coarse)").matches;
+  const weggeklikt = Number(opslag.get("garaj-install-nee") || 0);
+  const magTonen = !alGeinstalleerd && isMobiel && Date.now() - weggeklikt > 14 * 864e5;
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  let uitgesteld = null;
+
+  const toon = () => { if (magTonen) setTimeout(() => { balk.hidden = false; }, 2500); };
+  $("#ibNee").addEventListener("click", () => { balk.hidden = true; opslag.set("garaj-install-nee", String(Date.now())); });
+
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault(); uitgesteld = e; toon();
+  });
+  $("#ibJa").addEventListener("click", async () => {
+    if (!uitgesteld) return;
+    balk.hidden = true; uitgesteld.prompt();
+    const keuze = await uitgesteld.userChoice.catch(() => null);
+    if (!keuze || keuze.outcome !== "accepted") opslag.set("garaj-install-nee", String(Date.now()));
+    uitgesteld = null;
+  });
+  window.addEventListener("appinstalled", () => { balk.hidden = true; toast("GARAJ staat op je beginscherm"); });
+
+  if (isIOS) {
+    balk.classList.add("ios");
+    $("#ibUitleg").innerHTML = 'Tik onderin op <b>Deel</b> <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> en kies <b>Zet op beginscherm</b>.';
+    toon();
+  }
+})();
 </script>
 
 </body></html>
