@@ -138,6 +138,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .card .badge { position: absolute; top: 14px; right: 14px; }
 .leeg { padding: 40px 0; color: var(--muted); }
 
+.course .g-foto { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; display: block; }
+.cat-head.met-foto { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: center; }
+.cat-art { max-width: 220px; justify-self: end; }
+@media (max-width: 760px) {
+  .cat-head.met-foto { grid-template-columns: minmax(0, 1fr) 84px; gap: 14px; align-items: start; }
+  .cat-art { margin-top: 30px; }
+}
+
+.banner { margin: 0 0 40px; border-top-left-radius: 64px; overflow: hidden; aspect-ratio: 1295 / 768; background: var(--plane); }
+.banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 600px) { .banner { border-top-left-radius: 40px; margin-bottom: 28px; } }
+
 /* ---------- Recept ---------- */
 .crumbs { padding-top: 24px; font-size: 14px; }
 .crumbs a { text-decoration: none; font-weight: 700; color: var(--g); }
@@ -305,12 +317,12 @@ footer a:hover { color: var(--accent); }
 const OVER = [];
 
 /* =====================================================================
-   GANGEN. Een gang verschijnt pas zodra er een recept in staat.
+   GANGEN. Een gang verschijnt pas zodra er een recept in staat. foto = beeld op de gangkaart.
    ===================================================================== */
 const GANGEN = [
-  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen" },
-  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten" },
-  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten" },
+  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen",         foto: "img/gang-soep.jpg" },
+  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten", foto: "img/gang-hoofdgerecht.jpg" },
+  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten",   foto: "img/gang-bijgerecht.jpg" },
   { id: "dessert",      naam: "Desserts",               kort: "Desserts" }
 ];
 
@@ -342,7 +354,7 @@ const RECEPTEN = [
     gang: "bijgerecht",
     labels: ["vooraf", "barbecue", "vegetarisch"],
     favoriet: true,
-    foto: "",
+    foto: "img/griekse-witte-koolsalade.jpg",
     toegevoegd: "",
     noot: "Na jarenlang experimenteren, weinig genieten en veel weggooien is het eindelijk gelukt. Heerlijk als het 30 graden is en de barbecue aan staat.",
     intro: "Het basisrecept om witte kool op een Griekse manier te bereiden. Naar wens snijd je er nog een worteltje in julienne, wat paprika of komkommer bij.",
@@ -372,7 +384,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: true,
-    foto: "",
+    foto: "img/bolognesesaus.jpg",
     toegevoegd: "",
     noot: "Het geheim zit in de tomatenpuree die je apart in de pan bakt, en in de pasta die je met een scheut kookwater door de saus roert.",
     intro: "Een volle saus die minimaal een uur zachtjes trekt. Langer mag altijd, zolang alles onder vocht staat.",
@@ -404,7 +416,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: true,
-    foto: "",
+    foto: "img/kip-paprikasch.jpg",
     toegevoegd: "",
     noot: "Mijn eigen special. Een gladde paprikasaus door de groenten te pureren, een uur laten intrekken en verse frieten erbij.",
     intro: "Kip in een gladde saus van paprika, ui en flink wat paprikapoeder. Neem de tijd: laag vuur en om de vijf minuten roeren.",
@@ -445,7 +457,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: false,
-    foto: "",
+    foto: "img/kip-boursin.jpg",
     toegevoegd: "",
     intro: "Kip die anderhalf uur zachtjes gaart in champignonsoep en wordt afgemaakt met Boursin, sambal en kookroom.",
     tijd: "± 2 uur",
@@ -476,7 +488,7 @@ const RECEPTEN = [
     gang: "soep",
     labels: ["pittig", "comfortfood"],
     favoriet: false,
-    foto: "",
+    foto: "img/servische-bonensoep.jpg",
     toegevoegd: "",
     intro: "Stevige soep met pittige Debrecener worst, witte bonen en paprika. Gebonden en afgemaakt met een scheut room.",
     tijd: "± 45 min",
@@ -518,7 +530,7 @@ const RECEPTEN = [
     gang: "soep",
     labels: ["pittig", "vegetarisch"],
     favoriet: false,
-    foto: "",
+    foto: "img/grieks-knoflookbrood-fetadip.jpg",
     toegevoegd: "2026-10-10",
     intro: "Knapperige ciabatta met boter van geroosterde knoflook, met daarbij een romige dip van feta, Griekse yoghurt, geroosterde paprika en chilivlokken. Terwijl de knoflook in de oven zit, maak je de dip.",
     tijd: "± 45 min, waarvan 20 minuten werk",
@@ -621,10 +633,11 @@ function home() {
         <div class="eyebrow">Zelf gekookt, steeds weer gemaakt</div>
         <h1>Weinig recepten.<br><span>Allemaal goed.</span></h1>
       </div>
-      <div class="hero-art">${beeld(null)}</div>
+      <div class="hero-art"><span class="beeld"><img src="img/hero.jpg" alt="Pan met paprikasaus, omringd door fijngesneden ui, paprika, peterselie en knoflook"></span></div>
       <p class="lead">Geen eindeloze lijst, maar gerechten die ik zelf heb uitgeprobeerd en waar ik echt van geniet.</p>
     </section>
     ${nieuw.length ? `<section style="padding-bottom:28px"><div class="newstrip"><span class="badge">Nieuw</span>${nieuw.map(r => `<a class="chip" href="#${r.slug}">${esc(r.titel)}</a>`).join("")}</div></section>` : ""}
+    <figure class="banner"><img src="img/tafel.jpg" alt="Gedekte tafel vol Griekse en mediterrane gerechten, dips en brood" loading="lazy"></figure>
     <section class="plane" aria-labelledby="fav-h">
       <div class="section-head">
         <h2 id="fav-h">Mijn favorieten</h2>
@@ -645,6 +658,7 @@ function home() {
         ${actieveGangen().map(g => {
           const lijst = RECEPTEN.filter(r => r.gang === g.id);
           return `<div class="course g-${g.id}">
+            ${g.foto ? `<img class="g-foto" src="${esc(g.foto)}" alt="" loading="lazy">` : ""}
             <a href="#${g.id}"><strong>${esc(g.naam)}</strong><span>${lijst.length} →</span></a>
             <ul>${lijst.map(r => `<li><a href="#${r.slug}">${esc(r.titel)}</a></li>`).join("")}</ul>
           </div>`;
@@ -660,7 +674,8 @@ function recepten() {
   const gebruikteLabels = Object.keys(LABELS).filter(l => RECEPTEN.some(r => (r.labels || []).includes(l)));
   return `
   <div class="spine">
-    <section class="cat-head">
+    <section class="cat-head met-foto">
+      <div class="cat-tekst">
       <div class="eyebrow">${RECEPTEN.length} recepten, allemaal zelf gekookt</div>
       <h1>Recepten</h1>
       <label class="zoek" for="zoekveld">
@@ -674,6 +689,8 @@ function recepten() {
       <div class="chips" role="group" aria-label="Label">
         ${gebruikteLabels.map(l => `<button class="chip label" data-label="${l}" aria-pressed="${filter.label === l}">${esc(LABELS[l])}</button>`).join("")}
       </div>
+      </div>
+      <span class="beeld cat-art"><img src="img/snijplank.jpg" alt="Snijplank met fijngesneden ui, wortel, bleekselderij en peterselie"></span>
     </section>
     <p class="result" id="result" aria-live="polite"></p>
     <div class="list" id="lijst"></div>
