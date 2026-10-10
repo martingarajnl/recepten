@@ -320,9 +320,9 @@ const OVER = [];
    GANGEN. Een gang verschijnt pas zodra er een recept in staat. foto = beeld op de gangkaart.
    ===================================================================== */
 const GANGEN = [
-  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen",         foto: "img/gang-soep.jpg" },
-  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten", foto: "img/gang-hoofdgerecht.jpg" },
-  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten",   foto: "img/gang-bijgerecht.jpg" },
+  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen",         foto: "gang-soep.jpg" },
+  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten", foto: "gang-hoofdgerecht.jpg" },
+  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten",   foto: "gang-bijgerecht.jpg" },
   { id: "dessert",      naam: "Desserts",               kort: "Desserts" }
 ];
 
@@ -343,7 +343,7 @@ const LABELS = {
      hoeveelheid null + eenheid "naar wens" = eigen regel zonder getal
      hoeveelheid [1, 2] = van-tot
    stappen: timer = minuten voor de kookwekker
-   foto: pad naar de foto (bijv. "img/bolognesesaus.jpg"); leeg = illustratie
+   foto: pad naar de foto (bijv. "bolognesesaus.jpg"); leeg = illustratie
    toegevoegd: datum "JJJJ-MM-DD"; nieuw-label verschijnt 60 dagen
    lekkerBij: slug van een ander recept, of vrije tekst
    ===================================================================== */
@@ -354,7 +354,7 @@ const RECEPTEN = [
     gang: "bijgerecht",
     labels: ["vooraf", "barbecue", "vegetarisch"],
     favoriet: true,
-    foto: "img/griekse-witte-koolsalade.jpg",
+    foto: "griekse-witte-koolsalade.jpg",
     toegevoegd: "",
     noot: "Na jarenlang experimenteren, weinig genieten en veel weggooien is het eindelijk gelukt. Heerlijk als het 30 graden is en de barbecue aan staat.",
     intro: "Het basisrecept om witte kool op een Griekse manier te bereiden. Naar wens snijd je er nog een worteltje in julienne, wat paprika of komkommer bij.",
@@ -384,7 +384,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: true,
-    foto: "img/bolognesesaus.jpg",
+    foto: "bolognesesaus.jpg",
     toegevoegd: "",
     noot: "Het geheim zit in de tomatenpuree die je apart in de pan bakt, en in de pasta die je met een scheut kookwater door de saus roert.",
     intro: "Een volle saus die minimaal een uur zachtjes trekt. Langer mag altijd, zolang alles onder vocht staat.",
@@ -416,7 +416,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: true,
-    foto: "img/kip-paprikasch.jpg",
+    foto: "kip-paprikasch.jpg",
     toegevoegd: "",
     noot: "Mijn eigen special. Een gladde paprikasaus door de groenten te pureren, een uur laten intrekken en verse frieten erbij.",
     intro: "Kip in een gladde saus van paprika, ui en flink wat paprikapoeder. Neem de tijd: laag vuur en om de vijf minuten roeren.",
@@ -457,7 +457,7 @@ const RECEPTEN = [
     gang: "hoofdgerecht",
     labels: ["comfortfood", "laag-traag"],
     favoriet: false,
-    foto: "img/kip-boursin.jpg",
+    foto: "kip-boursin.jpg",
     toegevoegd: "",
     intro: "Kip die anderhalf uur zachtjes gaart in champignonsoep en wordt afgemaakt met Boursin, sambal en kookroom.",
     tijd: "± 2 uur",
@@ -488,7 +488,7 @@ const RECEPTEN = [
     gang: "soep",
     labels: ["pittig", "comfortfood"],
     favoriet: false,
-    foto: "img/servische-bonensoep.jpg",
+    foto: "servische-bonensoep.jpg",
     toegevoegd: "",
     intro: "Stevige soep met pittige Debrecener worst, witte bonen en paprika. Gebonden en afgemaakt met een scheut room.",
     tijd: "± 45 min",
@@ -530,7 +530,7 @@ const RECEPTEN = [
     gang: "soep",
     labels: ["pittig", "vegetarisch"],
     favoriet: false,
-    foto: "img/grieks-knoflookbrood-fetadip.jpg",
+    foto: "grieks-knoflookbrood-fetadip.jpg",
     toegevoegd: "2026-10-10",
     intro: "Knapperige ciabatta met boter van geroosterde knoflook, met daarbij een romige dip van feta, Griekse yoghurt, geroosterde paprika en chilivlokken. Terwijl de knoflook in de oven zit, maak je de dip.",
     tijd: "± 45 min, waarvan 20 minuten werk",
@@ -633,11 +633,11 @@ function home() {
         <div class="eyebrow">Zelf gekookt, steeds weer gemaakt</div>
         <h1>Weinig recepten.<br><span>Allemaal goed.</span></h1>
       </div>
-      <div class="hero-art"><span class="beeld"><img src="img/hero.jpg" alt="Pan met paprikasaus, omringd door fijngesneden ui, paprika, peterselie en knoflook"></span></div>
+      <div class="hero-art"><span class="beeld"><img src="hero.jpg" alt="Pan met paprikasaus, omringd door fijngesneden ui, paprika, peterselie en knoflook"></span></div>
       <p class="lead">Geen eindeloze lijst, maar gerechten die ik zelf heb uitgeprobeerd en waar ik echt van geniet.</p>
     </section>
     ${nieuw.length ? `<section style="padding-bottom:28px"><div class="newstrip"><span class="badge">Nieuw</span>${nieuw.map(r => `<a class="chip" href="#${r.slug}">${esc(r.titel)}</a>`).join("")}</div></section>` : ""}
-    <figure class="banner"><img src="img/tafel.jpg" alt="Gedekte tafel vol Griekse en mediterrane gerechten, dips en brood" loading="lazy"></figure>
+    <figure class="banner"><img src="tafel.jpg" alt="Gedekte tafel vol Griekse en mediterrane gerechten, dips en brood" loading="lazy"></figure>
     <section class="plane" aria-labelledby="fav-h">
       <div class="section-head">
         <h2 id="fav-h">Mijn favorieten</h2>
@@ -690,7 +690,7 @@ function recepten() {
         ${gebruikteLabels.map(l => `<button class="chip label" data-label="${l}" aria-pressed="${filter.label === l}">${esc(LABELS[l])}</button>`).join("")}
       </div>
       </div>
-      <span class="beeld cat-art"><img src="img/snijplank.jpg" alt="Snijplank met fijngesneden ui, wortel, bleekselderij en peterselie"></span>
+      <span class="beeld cat-art"><img src="snijplank.jpg" alt="Snijplank met fijngesneden ui, wortel, bleekselderij en peterselie"></span>
     </section>
     <p class="result" id="result" aria-live="polite"></p>
     <div class="list" id="lijst"></div>
