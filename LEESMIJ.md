@@ -47,3 +47,9 @@ Zodra de nieuwe versie live staat, ruimt het formulier dat concept vanzelf op.
 2. Dien `https://garaj.nl/sitemap.xml` in.
 3. Test een recept in de **Rich Results Test** (search.google.com/test/rich-results).
    Je hoort daar "Recept" als geldig resultaat te zien.
+
+## Bezoekersteller (zonder cookies)
+
+De site gebruikt GoatCounter: anoniem, zonder cookies, dus zonder cookiebalk.
+De code staat bovenin `bouw.js` bij `B.TELLER`. Leeg = geen teller.
+Je ziet de cijfers op je eigen dashboard, bijvoorbeeld https://garaj.goatcounter.com.

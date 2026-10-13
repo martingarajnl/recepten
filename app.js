@@ -193,10 +193,30 @@
 
   /* ---------- Thema ---------- */
   $("#ladeKnop").onclick = openLade;
-  $("#themaKnop").onclick = () => {
-    const d = document.documentElement, donker = d.dataset.theme ? d.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-    d.dataset.theme = donker ? "light" : "dark"; try { localStorage.setItem("garaj-thema", d.dataset.theme); } catch (e) {}
+  const isDonker = () => { const d = document.documentElement; return d.dataset.theme ? d.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+  function themaKleur() { $$('meta[name="theme-color"]').forEach(m => { m.removeAttribute("media"); m.content = isDonker() ? "#15110E" : "#F4EDE1"; }); }
+  if (document.documentElement.dataset.theme) themaKleur();
+  $("#themaKnop").onclick = e => {
+    const d = document.documentElement, naar = isDonker() ? "light" : "dark";
+    const zet = () => { d.dataset.theme = naar; themaKleur(); try { localStorage.setItem("garaj-thema", naar); } catch (err) {} };
+    if (!document.startViewTransition || rustig) return zet();
+    const b = e.currentTarget.getBoundingClientRect(), x = b.left + b.width / 2, y = b.top + b.height / 2;
+    const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    d.classList.add("thema-wissel");
+    const vt = document.startViewTransition(zet);
+    vt.ready.then(() => d.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] }, { duration: 650, easing: "cubic-bezier(.4,0,.2,1)", pseudoElement: "::view-transition-new(root)" })).catch(() => {});
+    vt.finished.finally(() => d.classList.remove("thema-wissel"));
   };
+
+  /* ---------- Bezoekersteller zonder cookies ---------- */
+  function tel() { try { window.goatcounter && window.goatcounter.count && window.goatcounter.count({ path: location.pathname }); } catch (e) {} }
+  if (B.TELLER && !/^(localhost|127\.)/.test(location.hostname)) {
+    const s = document.createElement("script");
+    s.async = true; s.src = "https://gc.zgo.at/count.js";
+    s.dataset.goatcounter = `https://${B.TELLER}.goatcounter.com/count`;
+    s.dataset.goatcounterSettings = JSON.stringify({ no_onload: true });
+    s.onload = tel; document.head.appendChild(s);
+  }
 
   /* ---------- Beweging: lijn, draaiende borden, parallax, onthullen ---------- */
   let rafAan = false;
@@ -244,8 +264,8 @@
     if (!eerste) view.focus({ preventScroll: true });
   }
   function overgang(fn) { if (document.startViewTransition && !rustig) document.startViewTransition(fn); else fn(); }
-  function naar(url) { overgang(() => { history.pushState(null, "", url); render(); }); }
-  addEventListener("popstate", () => overgang(() => render()));
+  function naar(url) { overgang(() => { history.pushState(null, "", url); render(); }); setTimeout(tel, 50); }
+  addEventListener("popstate", () => { overgang(() => render()); setTimeout(tel, 50); });
   document.addEventListener("click", e => {
     const a = e.target.closest("a[href]");
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target || a.hasAttribute("download")) return;

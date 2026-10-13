@@ -358,7 +358,35 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
 footer a { text-decoration: none; font-weight: 600; }
 footer a:hover { color: var(--tomaat); }
-.thema { border: 1px solid var(--lijn); background: var(--linnen); border-radius: 999px; padding: 6px 14px; font-size: 13.5px; font-weight: 600; color: var(--rook); }
+.privacy { font-size: 12.5px; opacity: .85; }
+
+/* ---------- Dag/nacht-schakelaar ---------- */
+.thema-knop { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--lijn); background: var(--linnen); border-radius: 999px; padding: 4px 14px 4px 4px; font-weight: 600; font-size: 14.5px; color: var(--inkt); flex: none; transition: border-color .2s; }
+.thema-knop:hover { border-color: var(--tomaat); }
+.thema-baan { position: relative; width: 58px; height: 32px; border-radius: 999px; background: #F2C46B; box-shadow: inset 0 1px 3px rgb(0 0 0 / .18); transition: background .5s; overflow: hidden; }
+.thema-baan::before, .thema-baan::after { content: ""; position: absolute; border-radius: 50%; background: #fff; transition: opacity .5s, transform .5s; opacity: 0; }
+.thema-baan::before { width: 3px; height: 3px; left: 12px; top: 9px; box-shadow: 8px 10px 0 -0.5px #fff, 16px 2px 0 0 #fff; }
+.thema-bol { position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #E08A12; display: grid; place-items: center; box-shadow: 0 2px 6px rgb(0 0 0 / .25); transition: transform .55s cubic-bezier(.3,1.4,.5,1), background .5s, color .5s; }
+.thema-bol svg { width: 17px; height: 17px; grid-area: 1 / 1; transition: opacity .35s, transform .55s; }
+.thema-bol .maan { opacity: 0; transform: rotate(-90deg) scale(.5); }
+.t-nacht { display: none; }
+:root[data-theme="dark"] .thema-baan { background: #2B3550; }
+:root[data-theme="dark"] .thema-baan::before { opacity: 1; }
+:root[data-theme="dark"] .thema-bol { transform: translateX(26px); background: #E9E4D8; color: #2B3550; }
+:root[data-theme="dark"] .thema-bol .zon { opacity: 0; transform: rotate(90deg) scale(.5); }
+:root[data-theme="dark"] .thema-bol .maan { opacity: 1; transform: none; }
+:root[data-theme="dark"] .t-dag { display: none; } :root[data-theme="dark"] .t-nacht { display: inline; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .thema-baan { background: #2B3550; }
+  :root:not([data-theme="light"]) .thema-baan::before { opacity: 1; }
+  :root:not([data-theme="light"]) .thema-bol { transform: translateX(26px); background: #E9E4D8; color: #2B3550; }
+  :root:not([data-theme="light"]) .thema-bol .zon { opacity: 0; transform: rotate(90deg) scale(.5); }
+  :root:not([data-theme="light"]) .thema-bol .maan { opacity: 1; transform: none; }
+  :root:not([data-theme="light"]) .t-dag { display: none; } :root:not([data-theme="light"]) .t-nacht { display: inline; }
+}
+@media (max-width: 560px) { .thema-tekst { display: none; } .thema-knop { padding: 4px; } .kop .wrap { gap: 10px; } .merk { letter-spacing: .22em; } }
+html.thema-wissel::view-transition-old(root), html.thema-wissel::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.thema-wissel::view-transition-old(bord), html.thema-wissel::view-transition-new(bord) { animation: none; }
 
 /* ---------- Beweging ---------- */
 .laad > * { animation: rijs .9s cubic-bezier(.2,.9,.3,1) both; }
@@ -407,7 +435,7 @@ footer a:hover { color: var(--tomaat); }
   @page { margin: 14mm; }
   :root { --creme: #fff; --linnen: #fff; --inkt: #111; --rook: #555; --lijn: #ccc; --vlak: #fff; --vlak-inkt: #111; --vlak-rook: #555; --tomaat: #A62E14; --tomaat-zacht: #f4f0ec; padding: 0; }
   body { font-size: 10.5pt; line-height: 1.45; background: #fff; }
-  .kop, footer, .acties, .rug, .dok, .toast, .installbalk, #laag, .hint, .daarna, .wekker, .kruimel, .porties small, input[type=range], .paneel-knop, .naar-inhoud, .labels, .ingr input { display: none !important; }
+  .kop, footer, .acties, .thema-knop, .rug, .dok, .toast, .installbalk, #laag, .hint, .daarna, .wekker, .kruimel, .porties small, input[type=range], .paneel-knop, .naar-inhoud, .labels, .ingr input { display: none !important; }
   .wrap { padding: 0; max-width: none; }
   .r-kop { grid-template-columns: minmax(0, 1fr) 42mm; gap: 8mm; padding-block: 0 6mm; border-bottom: 1px solid #ccc; margin-bottom: 6mm; }
   .r-kop h1 { font-size: 26pt; margin-block: 2mm 3mm; }

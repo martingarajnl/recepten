@@ -8,6 +8,11 @@
   "use strict";
   const B = {};
   B.SITE = "https://garaj.nl";
+
+  /* Bezoekersteller zonder cookies (GoatCounter). Vul hier je eigen code in,
+     bijvoorbeeld "garaj" als je dashboard garaj.goatcounter.com is.
+     Leeg laten = geen teller. */
+  B.TELLER = "";
   let D = null;
   B.init = data => { D = data; return B; };
   B.data = () => D;
@@ -347,6 +352,10 @@ ${o.jsonld ? `<script type="application/ld+json">${o.jsonld}</script>` : ""}
   <div class="wrap">
     <a class="merk" href="/" aria-label="GARAJ, naar de startpagina">${LOGO}GARAJ</a>
     <nav class="nav" aria-label="Hoofdmenu"><a href="/#recepten">Recepten</a><a href="/#collecties">Collecties</a><a href="/#inhuis">In huis</a><a href="/#seizoen">Seizoen</a></nav>
+    <button class="thema-knop" type="button" id="themaKnop" aria-label="Wissel tussen dag en nacht">
+      <span class="thema-baan" aria-hidden="true"><span class="thema-bol"><svg class="zon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><svg class="maan" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg></span></span>
+      <span class="thema-tekst"><span class="t-dag">Dag</span><span class="t-nacht">Nacht</span></span>
+    </button>
     <a class="ikoon-knop" href="/#recepten" id="zoekKnop" aria-label="Zoek een recept">${ZOEK}</a>
     <button class="ikoon-knop" type="button" id="ladeKnop" aria-label="Boodschappenlijst openen">${TAS}<span class="tel" id="tel" data-n="0">0</span></button>
   </div>
@@ -354,8 +363,8 @@ ${o.jsonld ? `<script type="application/ld+json">${o.jsonld}</script>` : ""}
 <main id="app"><div class="rug" aria-hidden="true"><i></i><b></b></div><div id="view" tabindex="-1">${o.inhoud}</div></main>
 <footer>
   <div class="wrap">
-    <span>GARAJ · Allemaal zelf gekookt · garaj.nl</span>
-    <nav aria-label="Voettekst"><a href="/#recepten">Recepten</a><a href="/#collecties">Collecties</a><a href="/#inhuis">In huis</a><a href="/#seizoen">Seizoen</a><button class="thema" type="button" id="themaKnop">Licht / donker</button></nav>
+    <span>GARAJ · Allemaal zelf gekookt · garaj.nl<br><small class="privacy">Geen cookies. Bezoek wordt alleen anoniem geteld.</small></span>
+    <nav aria-label="Voettekst"><a href="/#recepten">Recepten</a><a href="/#collecties">Collecties</a><a href="/#inhuis">In huis</a><a href="/#seizoen">Seizoen</a></nav>
   </div>
 </footer>
 <div class="kook" id="kook" hidden role="dialog" aria-modal="true" aria-label="Kookmodus">

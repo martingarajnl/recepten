@@ -13,7 +13,7 @@
    lekkerBij: slug van een ander recept, of vrije tekst
    ===================================================================== */
 var GARAJ_DATA = {
-  "versie": "2026-10-13.1",
+  "versie": "2026-10-13.2",
   "GANGEN": [
     {
       "id": "soep",
