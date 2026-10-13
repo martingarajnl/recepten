@@ -12,7 +12,7 @@
   /* Bezoekersteller zonder cookies (GoatCounter). Vul hier je eigen code in,
      bijvoorbeeld "garaj" als je dashboard garaj.goatcounter.com is.
      Leeg laten = geen teller. */
-  B.TELLER = "";
+  B.TELLER = "garaj";
   let D = null;
   B.init = data => { D = data; return B; };
   B.data = () => D;
