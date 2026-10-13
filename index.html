@@ -1,1011 +1,199 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>GARAJ Recepten</title><meta name="description" content="Recepten die ik zelf kook en steeds weer maak."><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#F5F0E8"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GARAJ"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GARAJ Recepten</title>
+<meta name="description" content="Recepten die ik zelf kook en steeds weer maak. Weinig recepten, allemaal goed.">
+<link rel="canonical" href="https://garaj.nl/">
+<meta property="og:site_name" content="GARAJ Recepten">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GARAJ Recepten">
+<meta property="og:description" content="Recepten die ik zelf kook en steeds weer maak. Weinig recepten, allemaal goed.">
+<meta property="og:url" content="https://garaj.nl/">
+<meta property="og:image" content="https://garaj.nl/tafel.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#F4EDE1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15110E" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GARAJ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap">
-<style>
-/* Layout: één oranje lijn loopt als ruggengraat links door de pagina en buigt met een kwartcirkel uit in elk donker vlak. */
-:root {
-  --bg: #F5F0E8; --surface: #FFFDF9; --ink: #171412; --muted: #6E655C;
-  --plane: #1C1917; --plane-ink: #F5EEE5;
-  --accent: #E2620B; --accent-soft: #F6D9C1; --rule: #E2D8CB;
-  /* kleur per gang */
-  --g-soep: #C8401A; --g-hoofdgerecht: #E2620B; --g-bijgerecht: #5F7F3A; --g-dessert: #B07A12;
-  --font: "Lato", Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
-  --r-arc: 112px; --line: 2px; --pad: clamp(18px, 4vw, 48px);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #131110; --surface: #1C1A18; --ink: #F2ECE4; --muted: #A69B8F;
-    --plane: #24201D; --plane-ink: #F5EEE5; --accent: #F07A24; --accent-soft: #4A2C16; --rule: #34302C;
-    --g-soep: #E8693F; --g-hoofdgerecht: #F07A24; --g-bijgerecht: #94B064; --g-dessert: #DDA640;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #131110; --surface: #1C1A18; --ink: #F2ECE4; --muted: #A69B8F;
-  --plane: #24201D; --plane-ink: #F5EEE5; --accent: #F07A24; --accent-soft: #4A2C16; --rule: #34302C;
-  --g-soep: #E8693F; --g-hoofdgerecht: #F07A24; --g-bijgerecht: #94B064; --g-dessert: #DDA640;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-html, body { margin: 0; }
-img, svg { max-width: 100%; }
-body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.6; }
-h1, h2, h3 { line-height: 1.15; text-wrap: balance; margin: 0; }
-p { margin: 0; }
-a { color: inherit; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-button { font: inherit; color: inherit; cursor: pointer; }
-.g-soep { --g: var(--g-soep); } .g-hoofdgerecht { --g: var(--g-hoofdgerecht); }
-.g-bijgerecht { --g: var(--g-bijgerecht); } .g-dessert { --g: var(--g-dessert); }
-.eyebrow { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--g, var(--accent)); }
-
-/* ---------- Kop en navigatie ---------- */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule); }
-.top-in { max-width: 1120px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; }
-.brand { font-weight: 900; letter-spacing: .28em; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 10px; margin-right: auto; }
-.brand svg { width: 26px; height: 26px; }
-.nav { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0; }
-.nav a { display: block; text-decoration: none; padding: 8px 14px; border-radius: 999px; font-size: 15px; font-weight: 700; color: var(--muted); }
-.nav a:hover { color: var(--ink); }
-.nav a[aria-current="page"] { color: var(--ink); background: var(--accent-soft); }
-.search-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule); background: none; display: grid; place-items: center; text-decoration: none; flex: none; }
-.search-btn svg { width: 18px; height: 18px; }
-@media (max-width: 480px) { .nav a { padding: 8px 10px; } .brand { letter-spacing: .18em; font-size: 18px; } }
-
-/* ---------- Ruggengraat met boog ---------- */
-.page { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 0 72px; }
-.spine { border-left: var(--line) solid var(--accent); padding-left: var(--pad); }
-.plane {
-  background: var(--plane); color: var(--plane-ink);
-  border-top: var(--line) solid var(--accent); border-left: var(--line) solid var(--accent);
-  border-top-left-radius: var(--r-arc);
-  margin-left: calc(-1 * var(--pad) - var(--line));
-  padding: clamp(36px, 6vw, 64px) clamp(20px, 5vw, 56px) clamp(36px, 6vw, 56px) clamp(36px, 7vw, 96px);
-}
-@media (max-width: 600px) {
-  :root { --r-arc: 64px; --pad: 14px; }
-  .page { padding-inline: 12px; }
-  .plane { padding: 36px 16px 32px 20px; margin-right: -12px; }
-}
-
-/* ---------- Beeld: foto of geometrisch bord ---------- */
-.beeld { display: block; aspect-ratio: 1; width: 100%; max-width: 100%; }
-.beeld img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-.beeld svg { width: 100%; height: 100%; display: block; }
-
-/* ---------- Home ---------- */
-.hero { padding-block: clamp(32px, 8vw, 88px) clamp(28px, 6vw, 56px); display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: center; }
-.hero h1 { font-size: clamp(38px, 7vw, 76px); font-weight: 900; letter-spacing: -.01em; margin-top: 12px; }
-.hero h1 span { color: var(--accent); }
-.hero p.lead { font-size: clamp(17px, 2vw, 21px); font-weight: 300; max-width: 34ch; margin-top: 18px; color: var(--muted); }
-.hero-art { max-width: 340px; justify-self: end; width: 100%; color: var(--ink); }
-@media (max-width: 760px) {
-  .hero { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; align-items: start; }
-  .hero-art { max-width: 96px; margin-top: 8px; }
-  .hero p.lead { grid-column: 1 / -1; }
-}
-.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-.section-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; }
-.plane .section-head p { color: color-mix(in srgb, var(--plane-ink) 70%, transparent); max-width: 44ch; }
-
-.favs { display: grid; }
-.fav { display: grid; grid-template-columns: 128px minmax(0, 1fr) auto; gap: 28px; align-items: center; text-decoration: none; padding: 22px 0; border-top: 1px solid color-mix(in srgb, var(--plane-ink) 16%, transparent); color: var(--plane-ink); }
-.fav:first-child { border-top: 0; }
-.fav h3 { font-size: clamp(21px, 2.6vw, 28px); font-weight: 700; }
-.fav .note { margin-top: 6px; color: color-mix(in srgb, var(--plane-ink) 72%, transparent); max-width: 58ch; font-size: 16px; }
-.fav .go { font-weight: 700; color: var(--accent); white-space: nowrap; }
-.fav:hover h3 { color: var(--accent); }
-@media (max-width: 600px) { .fav { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: start; } .fav .go { display: none; } }
-
-.block { padding-block: 56px 8px; }
-.course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.course { background: var(--surface); border: 1px solid var(--rule); border-radius: 0 0 0 56px; padding: 22px 22px 26px 28px; display: grid; gap: 10px; align-content: start; border-top: 4px solid var(--g); }
-.course > a { text-decoration: none; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
-.course > a strong { font-size: 21px; }
-.course > a span { color: var(--muted); font-size: 14px; white-space: nowrap; }
-.course ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
-.course li a { text-decoration: none; color: var(--muted); font-size: 16px; }
-.course li a:hover { color: var(--g); }
-.course li a::before { content: ""; display: inline-block; width: 10px; height: 10px; border: 2px solid var(--g); border-right-color: transparent; border-bottom-color: transparent; border-radius: 50%; transform: rotate(-45deg); margin-right: 8px; }
-
-.newstrip { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-
-/* ---------- Recepten (overzicht) ---------- */
-.cat-head { padding-block: clamp(32px, 7vw, 64px) 24px; }
-.cat-head h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 900; margin-top: 10px; }
-.zoek { margin-top: 20px; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--rule); border-radius: 999px; padding: 4px 6px 4px 18px; max-width: 520px; }
-.zoek:focus-within { border-color: var(--accent); }
-.zoek svg { width: 18px; height: 18px; flex: none; color: var(--muted); }
-.zoek input { flex: 1; min-width: 0; border: 0; background: none; font: inherit; color: var(--ink); padding: 10px 0; outline: none; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.chip { border: 1px solid var(--rule); background: var(--surface); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 700; color: var(--muted); text-decoration: none; }
-.chip:hover { color: var(--ink); border-color: var(--g, var(--accent)); }
-.chip[aria-pressed="true"] { background: var(--g, var(--accent)); border-color: var(--g, var(--accent)); color: #fff; }
-.chip.label { font-weight: 400; }
-.chip.label::before { content: "# "; opacity: .6; }
-.result { color: var(--muted); font-size: 15px; margin: 20px 0 16px; }
-.list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-.card { background: var(--surface); border: 1px solid var(--rule); border-top-left-radius: 64px; text-decoration: none; display: grid; grid-template-rows: auto 1fr; overflow: hidden; }
-.card:hover { border-color: var(--g); }
-.card .art { background: var(--plane); padding: 22px; display: grid; place-items: center; color: var(--plane-ink); position: relative; }
-.card .art .beeld { width: 150px; }
-.card .body { padding: 18px 20px 22px; display: grid; gap: 6px; align-content: start; }
-.card h3 { font-size: 21px; font-weight: 700; }
-.card .meta { color: var(--muted); font-size: 14px; }
-.badge { display: inline-block; background: var(--accent); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
-.card .badge { position: absolute; top: 14px; right: 14px; }
-.leeg { padding: 40px 0; color: var(--muted); }
-
-.course .g-foto { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; display: block; }
-.cat-head.met-foto { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: center; }
-.cat-art { max-width: 220px; justify-self: end; }
-@media (max-width: 760px) {
-  .cat-head.met-foto { grid-template-columns: minmax(0, 1fr) 84px; gap: 14px; align-items: start; }
-  .cat-art { margin-top: 30px; }
-}
-
-.banner { margin: 0 0 40px; border-top-left-radius: 64px; overflow: hidden; aspect-ratio: 1295 / 768; background: var(--plane); }
-.banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (max-width: 600px) { .banner { border-top-left-radius: 40px; margin-bottom: 28px; } }
-
-/* ---------- Recept ---------- */
-.crumbs { padding-top: 24px; font-size: 14px; }
-.crumbs a { text-decoration: none; font-weight: 700; color: var(--g); }
-.r-head { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: end; padding-block: 16px 32px; }
-.r-head h1 { font-size: clamp(34px, 6vw, 64px); font-weight: 900; margin-top: 10px; }
-.r-head .intro { margin-top: 16px; font-size: clamp(17px, 2vw, 19px); font-weight: 300; max-width: 60ch; }
-.r-art { color: var(--ink); }
-.r-art figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; text-align: center; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 15px; color: var(--muted); align-items: center; }
-.facts b { color: var(--ink); }
-.labels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-@media (max-width: 680px) {
-  .r-head { grid-template-columns: minmax(0, 1fr) 84px; gap: 14px; align-items: start; }
-  .r-head .r-art { grid-row: 1; grid-column: 2; margin-top: 30px; }
-  .r-head .r-art figcaption { display: none; }
-}
-
-.tabs { display: none; gap: 6px; margin-bottom: 22px; background: color-mix(in srgb, var(--plane-ink) 10%, transparent); padding: 4px; border-radius: 999px; }
-.tabs button { flex: 1; border: 0; background: none; color: var(--plane-ink); padding: 10px; border-radius: 999px; font-weight: 700; }
-.tabs button[aria-selected="true"] { background: var(--accent); color: #fff; }
-.r-body { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
-.r-wrap .r-body h2 { font-size: 24px; font-weight: 900; margin-bottom: 16px; }
-@media (max-width: 860px) {
-  .tabs { display: flex; }
-  .r-body { grid-template-columns: minmax(0, 1fr); }
-  .r-body > [data-panel]:not(.actief) { display: none; }
-}
-.panel-ingr h3 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 22px 0 8px; }
-.servings { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--plane-ink) 22%, transparent); border-radius: 999px; width: fit-content; }
-.servings button { width: 34px; height: 34px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; font-size: 20px; font-weight: 700; line-height: 1; }
-.servings button:disabled { opacity: .35; cursor: default; }
-.servings output { min-width: 7ch; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
-.ingr { list-style: none; padding: 0; margin: 0; display: grid; }
-.ingr li label { display: grid; grid-template-columns: 22px 5.2em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid color-mix(in srgb, var(--plane-ink) 12%, transparent); cursor: pointer; align-items: baseline; }
-.ingr li.smaak label { grid-template-columns: 22px minmax(0, 1fr); }
-.ingr li.smaak .k { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: color-mix(in srgb, var(--plane-ink) 60%, transparent); }
-.ingr input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; transform: translateY(3px); }
-.ingr .q { font-weight: 700; font-variant-numeric: tabular-nums; }
-.ingr .x { color: color-mix(in srgb, var(--plane-ink) 60%, transparent); font-size: 15px; }
-.ingr li:has(input:checked) label { opacity: .45; text-decoration: line-through; }
-.tools { margin-top: 16px; font-size: 15px; color: color-mix(in srgb, var(--plane-ink) 72%, transparent); }
-.lijst-btn { margin-top: 20px; width: 100%; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); background: none; color: var(--plane-ink); border-radius: 999px; padding: 12px; font-weight: 700; }
-.lijst-btn:hover { border-color: var(--accent); }
-
-.steps-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-.r-wrap .steps-head h2 { margin: 0; }
-.cook-btn { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 10px 20px; font-weight: 700; }
-.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; counter-reset: s; color: var(--ink); }
-.step { counter-increment: s; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 18px 18px 20px; background: var(--surface); border: 1px solid var(--rule); border-radius: 0 0 0 40px; cursor: pointer; }
-.step::before { content: counter(s); width: 40px; height: 40px; border-radius: 50%; border: var(--line) solid var(--accent); display: grid; place-items: center; font-weight: 900; color: var(--accent); }
-.step h3 { margin: 0 0 6px; font-size: 19px; }
-.step .t { display: inline-block; margin-left: 6px; font-size: 13px; font-weight: 700; color: var(--accent); }
-.step.done { opacity: .5; }
-.step.done::before { content: "✓"; background: var(--accent); color: #fff; }
-.timer-btn { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: none; border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 700; color: var(--accent); }
-.timer-btn:hover { border-color: var(--accent); }
-.timer-btn svg { width: 14px; height: 14px; }
-.hint { font-size: 14px; margin-top: 12px; color: color-mix(in srgb, var(--plane-ink) 60%, transparent); }
-.tip { margin-top: 24px; padding: 20px 22px; border-left: var(--line) solid var(--accent); background: var(--accent-soft); color: var(--ink); border-radius: 0 0 40px 0; }
-.tip strong { display: block; margin-bottom: 4px; }
-
-.after { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 48px; }
-@media (max-width: 760px) { .after { grid-template-columns: minmax(0, 1fr); } }
-.after h2 { font-size: 22px; font-weight: 900; margin-bottom: 14px; }
-.bij { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-.bij li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; }
-.bij .beeld { width: 48px; color: var(--ink); }
-.bij a { font-weight: 700; text-decoration: none; }
-.bij a:hover { color: var(--accent); }
-.bij .dot { width: 48px; height: 48px; border-radius: 50%; border: var(--line) solid var(--rule); border-top-color: var(--accent); }
-.pager { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: 40px; }
-.pager a { text-decoration: none; border: 1px solid var(--rule); border-radius: 0 0 0 32px; padding: 14px 18px; display: grid; gap: 2px; background: var(--surface); }
-.pager a:hover { border-color: var(--accent); }
-.pager a.next { text-align: right; border-radius: 0 0 32px 0; }
-.pager small { color: var(--muted); font-size: 13px; }
-.pager strong { font-size: 17px; }
-
-/* ---------- Over ---------- */
-.over { max-width: 62ch; padding-block: clamp(32px, 7vw, 64px); display: grid; gap: 16px; font-size: 19px; }
-.over h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 900; }
-
-/* ---------- Kookmodus ---------- */
-.cook { position: fixed; inset: 0; z-index: 50; background: var(--plane); color: var(--plane-ink); display: grid; grid-template-rows: auto 1fr auto; padding: calc(env(safe-area-inset-top, 0px) + 16px) 20px calc(env(safe-area-inset-bottom, 0px) + 20px); }
-.cook-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 900px; width: 100%; margin: 0 auto; }
-.cook-top button { background: none; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); border-radius: 999px; padding: 8px 16px; font-weight: 700; }
-.cook-main { max-width: 900px; width: 100%; margin: 0 auto; align-self: center; padding-left: clamp(20px, 5vw, 56px); border-left: var(--line) solid var(--accent); }
-.cook-main .eyebrow { margin-bottom: 14px; }
-.cook-main h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 900; margin-bottom: 18px; }
-.cook-main p { font-size: clamp(20px, 3vw, 30px); line-height: 1.45; font-weight: 300; max-width: 40ch; }
-.cook-main .timer-btn { font-size: 17px; padding: 10px 18px; margin-top: 22px; border-color: color-mix(in srgb, var(--plane-ink) 30%, transparent); }
-.cook-ing { margin-top: 20px; font-size: 16px !important; color: color-mix(in srgb, var(--plane-ink) 70%, transparent); }
-.cook-nav { display: flex; gap: 12px; max-width: 900px; width: 100%; margin: 0 auto; }
-.cook-nav button { flex: 1; padding: 16px; border-radius: 999px; font-weight: 700; font-size: 18px; border: 1px solid color-mix(in srgb, var(--plane-ink) 30%, transparent); background: none; }
-.cook-nav button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-.cook-nav button:disabled { opacity: .35; cursor: default; }
-.dots { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
-.dots i { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--plane-ink) 25%, transparent); }
-.dots i.on { background: var(--accent); }
-
-/* ---------- Timers en melding ---------- */
-.dock { position: fixed; right: 16px; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); z-index: 60; display: grid; gap: 8px; justify-items: end; }
-.tmr { display: flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bg); border-radius: 999px; padding: 8px 8px 8px 16px; font-size: 15px; box-shadow: 0 6px 24px rgb(0 0 0 / .25); max-width: calc(100vw - 32px); }
-.tmr b { font-variant-numeric: tabular-nums; font-size: 18px; }
-.tmr span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-.tmr button { width: 30px; height: 30px; border-radius: 50%; border: 0; background: color-mix(in srgb, var(--bg) 18%, transparent); color: var(--bg); flex: none; }
-.tmr.klaar { background: var(--accent); color: #fff; }
-.tmr.klaar button { color: #fff; }
-@media (prefers-reduced-motion: no-preference) { .tmr.klaar { animation: puls 1s ease-in-out infinite; } }
-@keyframes puls { 50% { transform: scale(1.05); } }
-.installbalk { position: fixed; left: 12px; right: 12px; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 60; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto auto; gap: 12px; align-items: center; background: var(--plane); color: var(--plane-ink); border-top: var(--line) solid var(--accent); border-radius: 0 0 0 32px; padding: 12px 12px 12px 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: 560px; margin: 0 auto; }
-.installbalk img { width: 48px; height: 48px; border-radius: 12px; display: block; }
-.ib-tekst { display: grid; gap: 2px; font-size: 14px; line-height: 1.35; }
-.ib-tekst strong { font-size: 15px; }
-.ib-tekst span { color: color-mix(in srgb, var(--plane-ink) 75%, transparent); }
-.ib-ja { background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 9px 16px; font-weight: 700; white-space: nowrap; }
-.ib-nee { background: none; border: 0; color: var(--plane-ink); opacity: .7; width: 36px; height: 36px; font-size: 16px; }
-.installbalk.ios { grid-template-columns: 48px minmax(0, 1fr) auto; }
-.installbalk.ios .ib-ja { display: none; }
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); z-index: 70; background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 700; font-size: 15px; }
-.copybox { width: 100%; min-height: 160px; margin-top: 12px; font: inherit; font-size: 14px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 10px; }
-
-footer { max-width: 1120px; margin: 0 auto; padding: 32px 20px 48px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-footer nav { display: flex; gap: 16px; }
-footer a { text-decoration: none; font-weight: 700; }
-footer a:hover { color: var(--accent); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .card, .course, .fav h3, .step, .chip, .pager a { transition: border-color .2s, color .2s, opacity .2s, background .2s; }
-}
-</style>
-
-<header class="top">
-  <div class="top-in">
-    <a class="brand" href="#home" aria-label="GARAJ, naar de startpagina">
-      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 36 V20 A16 16 0 0 1 20 4 H36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="6" fill="var(--ink)"/></svg>
-      GARAJ
-    </a>
-    <ul class="nav" id="nav"></ul>
-    <a class="search-btn" href="#zoeken" aria-label="Zoek een recept">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
-    </a>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css?v=2026-10-13.1">
+<script>try{var t=localStorage.getItem("garaj-thema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"GARAJ Recepten","url":"https://garaj.nl/","inLanguage":"nl-NL","description":"Recepten die ik zelf kook en steeds weer maak."},{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://garaj.nl/recept/servische-bonensoep/","name":"Servische bonensoep"},{"@type":"ListItem","position":2,"url":"https://garaj.nl/recept/grieks-knoflookbrood-fetadip/","name":"Grieks knoflookbrood met pittige paprika-fetadip"},{"@type":"ListItem","position":3,"url":"https://garaj.nl/recept/bolognesesaus/","name":"Bolognesesaus"},{"@type":"ListItem","position":4,"url":"https://garaj.nl/recept/kip-paprikasch/","name":"Garaj's kip-paprikasch"},{"@type":"ListItem","position":5,"url":"https://garaj.nl/recept/kip-boursin/","name":"Kip boursin"},{"@type":"ListItem","position":6,"url":"https://garaj.nl/recept/griekse-witte-koolsalade/","name":"Griekse witte koolsalade"}]}]}</script>
+</head>
+<body>
+<a class="naar-inhoud" href="#view">Naar de inhoud</a>
+<header class="kop">
+  <div class="wrap">
+    <a class="merk" href="/" aria-label="GARAJ, naar de startpagina"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 36 V20 A16 16 0 0 1 20 4 H36" fill="none" stroke="var(--tomaat)" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="24" r="6" fill="var(--inkt)"/></svg>GARAJ</a>
+    <nav class="nav" aria-label="Hoofdmenu"><a href="/#recepten">Recepten</a><a href="/#collecties">Collecties</a><a href="/#inhuis">In huis</a><a href="/#seizoen">Seizoen</a></nav>
+    <a class="ikoon-knop" href="/#recepten" id="zoekKnop" aria-label="Zoek een recept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></a>
+    <button class="ikoon-knop" type="button" id="ladeKnop" aria-label="Boodschappenlijst openen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.3 11.1a2 2 0 0 1-2 1.9H8.3a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="tel" id="tel" data-n="0">0</span></button>
   </div>
 </header>
-
-<main id="app" class="page"></main>
-
-<footer>
-  <span id="count"></span>
-  <nav id="footnav"></nav>
-</footer>
-
-<div class="cook" id="cook" hidden role="dialog" aria-modal="true" aria-label="Kookmodus">
-  <div class="cook-top">
-    <span class="eyebrow" id="cookTitle"></span>
-    <button id="cookClose">Sluiten</button>
-  </div>
-  <div class="cook-main" id="cookMain"></div>
-  <div>
-    <div class="dots" id="cookDots"></div>
-    <div class="cook-nav">
-      <button id="cookPrev">Vorige</button>
-      <button id="cookNext" class="primary">Volgende</button>
+<main id="app"><div class="rug" aria-hidden="true"><i></i><b></b></div><div id="view" tabindex="-1">
+  <section class="wrap hero">
+    <div class="laad">
+      <div class="oog"><b>●</b> Zelf gekookt · steeds weer gemaakt</div>
+      <h1><span class="r"><span>Weinig recepten.</span></span><span class="r"><span>Allemaal <em class="t">goed.</em></span></span></h1>
+      <p class="lead">Geen eindeloze lijst, maar gerechten die ik zelf heb uitgeprobeerd en waar ik echt van geniet.</p>
+      <div class="knoppen">
+        <a class="knop vol" href="/#recepten">Bekijk de recepten <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button class="knop dobbel" id="verras" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="9" cy="9" r="1.3" fill="currentColor"/><circle cx="15" cy="15" r="1.3" fill="currentColor"/><circle cx="15" cy="9" r="1.3" fill="currentColor"/><circle cx="9" cy="15" r="1.3" fill="currentColor"/></svg>Verras me</button>
+      </div>
     </div>
+    <div class="plateau" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 400 400"><defs><path id="cirkel" d="M200 200 m-188 0 a188 188 0 1 1 376 0 a188 188 0 1 1 -376 0"/></defs>
+        <text><textPath href="#cirkel">Laag vuur · veel geduld · 6 recepten · allemaal zelf gekookt · laag vuur · veel geduld ·</textPath></text></svg>
+      <div class="bord"><img src="/hero.jpg" alt="" data-draai="0.06" width="900" height="900"></div>
+      <div class="sticker"><span><b>6</b>recepten,<br>0 nonsens</span></div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><div class="band-in"><span>witte kool</span><i></i><span>azijn</span><i></i><span>zout</span><i></i><span>suiker</span><i></i><span>gemengd gehakt</span><i></i><span>wortel</span><i></i><span>ui</span><i></i><span>stengel bladselderij</span><i></i><span>rode wijn</span><i></i><span>laurierblad</span><i></i><span>runderbouillon</span><i></i><span>tomatenpuree</span><i></i><span>italiaanse kruiden</span><i></i><span>kipfilet</span><i></i><span>rode paprika's</span><i></i><span>middelgrote uien</span><i></i><span>tenen knoflook</span><i></i><span>kipbouillonblokjes</span><i></i><span>verse peterselie</span><i></i><span>paprikapoeder</span><i></i><span>vegeta</span><i></i><span>witte peper</span><i></i><span>kookroom</span><i></i><span>champignonsoep</span><i></i><span>pakje boursin</span><i></i><span>sambal</span><i></i><span>witte kool</span><i></i><span>azijn</span><i></i><span>zout</span><i></i><span>suiker</span><i></i><span>gemengd gehakt</span><i></i><span>wortel</span><i></i><span>ui</span><i></i><span>stengel bladselderij</span><i></i><span>rode wijn</span><i></i><span>laurierblad</span><i></i><span>runderbouillon</span><i></i><span>tomatenpuree</span><i></i><span>italiaanse kruiden</span><i></i><span>kipfilet</span><i></i><span>rode paprika's</span><i></i><span>middelgrote uien</span><i></i><span>tenen knoflook</span><i></i><span>kipbouillonblokjes</span><i></i><span>verse peterselie</span><i></i><span>paprikapoeder</span><i></i><span>vegeta</span><i></i><span>witte peper</span><i></i><span>kookroom</span><i></i><span>champignonsoep</span><i></i><span>pakje boursin</span><i></i><span>sambal</span><i></i></div></div>
+
+  <section class="wrap sectie" id="uitgelicht">
+    <div class="uitgelicht reveal">
+      <div>
+        <div class="oog">Recept van de week · Hoofdgerechten</div>
+        <h2>Bolognesesaus</h2>
+        <p class="noot">Het geheim zit in de tomatenpuree die je apart in de pan bakt, en in de pasta die je met een scheut kookwater door de saus roert.</p>
+        <div class="bon"><div><small>Tijd</small><strong>1 uur 20 min</strong></div><div><small>Porties</small><strong>4 personen</strong></div><div><small>Stappen</small><strong>3</strong></div></div>
+        <a class="knop" href="/recept/bolognesesaus/" data-naar="bolognesesaus">Naar het recept →</a>
+      </div>
+      <div class="bord-groot"><img src="/bolognesesaus.jpg" alt="Bolognesesaus" data-draai="-0.05" loading="lazy" width="900" height="900"></div>
+    </div>
+  </section>
+
+  <section class="wrap sectie" id="collecties">
+    <div class="sectie-kop reveal"><div><div class="oog">Collecties</div><h2>Waar heb je <em class="t">zin</em> in?</h2></div><p>Dezelfde recepten, gebundeld naar moment en stemming.</p></div>
+    <div class="rail">
+      <a class="collectie reveal" href="/#label-vooraf">
+          <div class="stapel"><img src="/griekse-witte-koolsalade.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">1 recept</span><h3>Vooraf te maken</h3></div>
+          <p>Vandaag maken, morgen nog lekkerder.</p></a><a class="collectie reveal" href="/#label-barbecue">
+          <div class="stapel"><img src="/griekse-witte-koolsalade.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">1 recept</span><h3>Barbecue</h3></div>
+          <p>Wat je ernaast zet als de barbecue aan staat.</p></a><a class="collectie reveal" href="/#label-vegetarisch">
+          <div class="stapel"><img src="/griekse-witte-koolsalade.jpg" alt="" loading="lazy" width="92" height="92"><img src="/grieks-knoflookbrood-fetadip.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">2 recepten</span><h3>Vegetarisch</h3></div>
+          <p>Geen vlees, wel smaak.</p></a><a class="collectie reveal" href="/#label-comfortfood">
+          <div class="stapel"><img src="/bolognesesaus.jpg" alt="" loading="lazy" width="92" height="92"><img src="/kip-paprikasch.jpg" alt="" loading="lazy" width="92" height="92"><img src="/kip-boursin.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">4 recepten</span><h3>Comfortfood</h3></div>
+          <p>Voor koude avonden en een volle tafel.</p></a><a class="collectie reveal" href="/#label-pittig">
+          <div class="stapel"><img src="/servische-bonensoep.jpg" alt="" loading="lazy" width="92" height="92"><img src="/grieks-knoflookbrood-fetadip.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">2 recepten</span><h3>Pittig</h3></div>
+          <p>Met chili, paprikapoeder en een beetje lef.</p></a><a class="collectie reveal" href="/#label-laag-traag">
+          <div class="stapel"><img src="/bolognesesaus.jpg" alt="" loading="lazy" width="92" height="92"><img src="/kip-paprikasch.jpg" alt="" loading="lazy" width="92" height="92"><img src="/kip-boursin.jpg" alt="" loading="lazy" width="92" height="92"></div>
+          <div><span class="tal">3 recepten</span><h3>Laag en traag</h3></div>
+          <p>Zet het vuur laag en laat de pan het werk doen.</p></a>
+    </div>
+  </section>
+
+  <section class="wrap sectie" id="recepten">
+    <div class="sectie-kop reveal"><div><div class="oog">Alle recepten</div><h2>Uit mijn <em class="t">keuken</em></h2></div><p>Zoek op gerecht of ingrediënt, of kies een gang.</p></div>
+    <div class="filters">
+      <label class="zoek" for="zoekveld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+        <input id="zoekveld" type="search" placeholder="Bijv. paprika of feta" value="" autocomplete="off" aria-label="Zoek een recept"></label>
+      <button class="chip" type="button" data-gang="" aria-pressed="true">Alles</button>
+      <button class="chip" type="button" data-gang="soep" aria-pressed="false">Soepen</button><button class="chip" type="button" data-gang="hoofdgerecht" aria-pressed="false">Hoofdgerechten</button><button class="chip" type="button" data-gang="bijgerecht" aria-pressed="false">Bijgerechten</button>
+      
+    </div>
+    <div class="raster" id="raster"><a class="kaart" href="/recept/servische-bonensoep/" data-naar="servische-bonensoep">
+    <div class="doek"><img src="/servische-bonensoep.jpg" alt="Servische bonensoep" loading="lazy" width="900" height="900">
+      <span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>45 min</span></div>
+    <div class="oog">Soepen</div>
+    <h3>Servische bonensoep</h3><p>Stevige soep met pittige Debrecener worst, witte bonen en paprika. Gebonden en afgemaakt met een scheut room.</p></a><a class="kaart" href="/recept/grieks-knoflookbrood-fetadip/" data-naar="grieks-knoflookbrood-fetadip">
+    <div class="doek"><img src="/grieks-knoflookbrood-fetadip.jpg" alt="Grieks knoflookbrood met pittige paprika-fetadip" loading="lazy" width="900" height="900">
+      <span class="nieuw">Nieuw</span><span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>45 min</span></div>
+    <div class="oog">Soepen</div>
+    <h3>Grieks knoflookbrood met pittige paprika-fetadip</h3><p>Knapperige ciabatta met boter van geroosterde knoflook, met daarbij een romige dip van feta, Griekse yoghurt, geroosterde paprika en chilivlokken. Terwijl de knoflook in de oven zit, maak je de dip.</p></a><a class="kaart" href="/recept/bolognesesaus/" data-naar="bolognesesaus">
+    <div class="doek"><img src="/bolognesesaus.jpg" alt="Bolognesesaus" loading="lazy" width="900" height="900">
+      <span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>1 uur 20 min</span></div>
+    <div class="oog">Hoofdgerechten</div>
+    <h3>Bolognesesaus</h3><p>Een volle saus die minimaal een uur zachtjes trekt. Langer mag altijd, zolang alles onder vocht staat.</p></a><a class="kaart" href="/recept/kip-paprikasch/" data-naar="kip-paprikasch">
+    <div class="doek"><img src="/kip-paprikasch.jpg" alt="Garaj's kip-paprikasch" loading="lazy" width="900" height="900">
+      <span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>1 uur 45 min</span></div>
+    <div class="oog">Hoofdgerechten</div>
+    <h3>Garaj's kip-paprikasch</h3><p>Kip in een gladde saus van paprika, ui en flink wat paprikapoeder. Neem de tijd: laag vuur en om de vijf minuten roeren.</p></a><a class="kaart" href="/recept/kip-boursin/" data-naar="kip-boursin">
+    <div class="doek"><img src="/kip-boursin.jpg" alt="Kip boursin" loading="lazy" width="900" height="900">
+      <span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>2 uur</span></div>
+    <div class="oog">Hoofdgerechten</div>
+    <h3>Kip boursin</h3><p>Kip die anderhalf uur zachtjes gaart in champignonsoep en wordt afgemaakt met Boursin, sambal en kookroom.</p></a><a class="kaart" href="/recept/griekse-witte-koolsalade/" data-naar="griekse-witte-koolsalade">
+    <div class="doek"><img src="/griekse-witte-koolsalade.jpg" alt="Griekse witte koolsalade" loading="lazy" width="900" height="900">
+      <span class="tijd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>3 dagen</span></div>
+    <div class="oog">Bijgerechten</div>
+    <h3>Griekse witte koolsalade</h3><p>Het basisrecept om witte kool op een Griekse manier te bereiden. Naar wens snijd je er nog een worteltje in julienne, wat paprika of komkommer bij.</p></a></div>
+  </section>
+
+  <section class="wrap sectie" id="inhuis">
+    <div class="inhuis reveal">
+      <div>
+        <div class="oog">Wat heb ik in huis?</div>
+        <h2>Kijk eerst in je <em class="t">koelkast</em></h2>
+        <p>Tik aan wat je al hebt. Je ziet direct welk recept het dichtstbij is en wat je nog mist.</p>
+        <div class="voorraad" id="voorraad"><button class="chip" type="button" data-v="Kip" aria-pressed="false">Kip</button><button class="chip" type="button" data-v="Gehakt" aria-pressed="false">Gehakt</button><button class="chip" type="button" data-v="Witte kool" aria-pressed="false">Witte kool</button><button class="chip" type="button" data-v="Paprika" aria-pressed="true">Paprika</button><button class="chip" type="button" data-v="Ui" aria-pressed="true">Ui</button><button class="chip" type="button" data-v="Knoflook" aria-pressed="true">Knoflook</button><button class="chip" type="button" data-v="Feta" aria-pressed="false">Feta</button><button class="chip" type="button" data-v="Griekse yoghurt" aria-pressed="false">Griekse yoghurt</button><button class="chip" type="button" data-v="Tomaat" aria-pressed="false">Tomaat</button><button class="chip" type="button" data-v="Champignons" aria-pressed="false">Champignons</button><button class="chip" type="button" data-v="Boursin" aria-pressed="false">Boursin</button><button class="chip" type="button" data-v="Witte bonen" aria-pressed="false">Witte bonen</button><button class="chip" type="button" data-v="Worst" aria-pressed="false">Worst</button><button class="chip" type="button" data-v="Prei" aria-pressed="false">Prei</button><button class="chip" type="button" data-v="Wortel" aria-pressed="false">Wortel</button><button class="chip" type="button" data-v="Aardappel" aria-pressed="false">Aardappel</button><button class="chip" type="button" data-v="Selderij" aria-pressed="false">Selderij</button><button class="chip" type="button" data-v="Rode wijn" aria-pressed="false">Rode wijn</button><button class="chip" type="button" data-v="Ciabatta" aria-pressed="false">Ciabatta</button><button class="chip" type="button" data-v="Kookroom" aria-pressed="false">Kookroom</button><button class="chip" type="button" data-v="Roomboter" aria-pressed="false">Roomboter</button><button class="chip" type="button" data-v="Peterselie" aria-pressed="false">Peterselie</button></div>
+      </div>
+      <div class="matches" id="matches"><a class="match" href="/recept/kip-paprikasch/" data-naar="kip-paprikasch"><img src="/kip-paprikasch.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Garaj's kip-paprikasch</strong><small>Je mist nog: kip, tomaat, kookroom en 2 meer</small>
+      <div class="meter"><i style="--w:38%"></i></div></div><span class="pct">3/8</span></a><a class="match" href="/recept/servische-bonensoep/" data-naar="servische-bonensoep"><img src="/servische-bonensoep.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Servische bonensoep</strong><small>Je mist nog: tomaat, witte bonen, worst en 4 meer</small>
+      <div class="meter"><i style="--w:30%"></i></div></div><span class="pct">3/10</span></a><a class="match" href="/recept/grieks-knoflookbrood-fetadip/" data-naar="grieks-knoflookbrood-fetadip"><img src="/grieks-knoflookbrood-fetadip.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Grieks knoflookbrood met pittige paprika-fetadip</strong><small>Je mist nog: feta, griekse yoghurt, ciabatta en 2 meer</small>
+      <div class="meter"><i style="--w:29%"></i></div></div><span class="pct">2/7</span></a><a class="match" href="/recept/bolognesesaus/" data-naar="bolognesesaus"><img src="/bolognesesaus.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Bolognesesaus</strong><small>Je mist nog: gehakt, tomaat, wortel en 2 meer</small>
+      <div class="meter"><i style="--w:17%"></i></div></div><span class="pct">1/6</span></a><a class="match" href="/recept/kip-boursin/" data-naar="kip-boursin"><img src="/kip-boursin.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Kip boursin</strong><small>Je mist nog: kip, champignons, boursin en 2 meer</small>
+      <div class="meter"><i style="--w:17%"></i></div></div><span class="pct">1/6</span></a><a class="match" href="/recept/griekse-witte-koolsalade/" data-naar="griekse-witte-koolsalade"><img src="/griekse-witte-koolsalade.jpg" alt="" loading="lazy" width="64" height="64">
+      <div><strong>Griekse witte koolsalade</strong><small>Je mist nog: witte kool</small>
+      <div class="meter"><i style="--w:0%"></i></div></div><span class="pct">0/1</span></a></div>
+    </div>
+  </section>
+
+  <section class="wrap sectie" id="seizoen">
+    <div class="sectie-kop reveal"><div><div class="oog">Seizoenskalender</div><h2>Wat is er <em class="t">nu</em> lekker?</h2></div><p>Groente uit Nederlandse grond en kas, per maand, met de recepten die erbij passen.</p></div>
+    <div class="maanden" role="group" aria-label="Maand"><button class="maand" type="button" data-maand="0" aria-pressed="false" aria-label="januari">jan</button><button class="maand" type="button" data-maand="1" aria-pressed="false" aria-label="februari">feb</button><button class="maand" type="button" data-maand="2" aria-pressed="false" aria-label="maart">mrt</button><button class="maand" type="button" data-maand="3" aria-pressed="false" aria-label="april">apr</button><button class="maand" type="button" data-maand="4" aria-pressed="false" aria-label="mei">mei</button><button class="maand" type="button" data-maand="5" aria-pressed="false" aria-label="juni">jun</button><button class="maand" type="button" data-maand="6" aria-pressed="false" aria-label="juli">jul</button><button class="maand" type="button" data-maand="7" aria-pressed="false" aria-label="augustus">aug</button><button class="maand" type="button" data-maand="8" aria-pressed="false" aria-label="september">sep</button><button class="maand" type="button" data-maand="9" aria-pressed="true" aria-label="oktober">okt<span class="nu" title="Deze maand"></span></button><button class="maand" type="button" data-maand="10" aria-pressed="false" aria-label="november">nov</button><button class="maand" type="button" data-maand="11" aria-pressed="false" aria-label="december">dec</button></div>
+    <div class="seizoen-in" id="seizoenIn"><div><div class="oog" style="margin-bottom:10px">In oktober</div><div class="groenten"><span>pompoen</span><span>witte kool</span><span>prei</span><span>paprika</span><span>champignons</span><span>wortel</span><span>ui</span></div></div>
+    <div class="seizoen-recepten"><a class="match" href="/recept/griekse-witte-koolsalade/" data-naar="griekse-witte-koolsalade"><img src="/griekse-witte-koolsalade.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Griekse witte koolsalade</strong><small>3 dagen</small></div></a><a class="match" href="/recept/bolognesesaus/" data-naar="bolognesesaus"><img src="/bolognesesaus.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Bolognesesaus</strong><small>1 uur 20 min</small></div></a><a class="match" href="/recept/kip-paprikasch/" data-naar="kip-paprikasch"><img src="/kip-paprikasch.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Garaj's kip-paprikasch</strong><small>1 uur 45 min</small></div></a><a class="match" href="/recept/kip-boursin/" data-naar="kip-boursin"><img src="/kip-boursin.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Kip boursin</strong><small>2 uur</small></div></a><a class="match" href="/recept/servische-bonensoep/" data-naar="servische-bonensoep"><img src="/servische-bonensoep.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Servische bonensoep</strong><small>45 min</small></div></a><a class="match" href="/recept/grieks-knoflookbrood-fetadip/" data-naar="grieks-knoflookbrood-fetadip"><img src="/grieks-knoflookbrood-fetadip.jpg" alt="" loading="lazy" width="52" height="52"><div><strong>Grieks knoflookbrood met pittige paprika-fetadip</strong><small>45 min</small></div></a></div></div>
+  </section>
+
+  <figure class="tafel"><img src="/tafel.jpg" alt="Gedekte tafel vol Griekse en mediterrane gerechten, dips en brood" loading="lazy" data-par="1" width="1295" height="768"><p>Allemaal zelf <em>gekookt.</em></p></figure></div></main>
+<footer>
+  <div class="wrap">
+    <span>GARAJ · Allemaal zelf gekookt · garaj.nl</span>
+    <nav aria-label="Voettekst"><a href="/#recepten">Recepten</a><a href="/#collecties">Collecties</a><a href="/#inhuis">In huis</a><a href="/#seizoen">Seizoen</a><button class="thema" type="button" id="themaKnop">Licht / donker</button></nav>
+  </div>
+</footer>
+<div class="kook" id="kook" hidden role="dialog" aria-modal="true" aria-label="Kookmodus">
+  <div>
+    <div class="kook-top"><span class="oog" id="kookTitel"></span><button type="button" id="kookSluit">Sluiten</button></div>
+    <div class="voortgang"><i id="kookBalk"></i></div>
+  </div>
+  <div class="kook-midden" id="kookMidden"></div>
+  <div><p class="veeg">Veeg of gebruik ← → · je scherm blijft aan</p>
+    <div class="kook-onder"><button type="button" id="kookVorig">Vorige</button><button type="button" id="kookVolgend" class="vol">Volgende</button></div>
   </div>
 </div>
-<div class="dock" id="dock" aria-live="polite"></div>
+<div id="laag"></div>
+<div class="dok" id="dok" aria-live="polite"></div>
 <div class="toast" id="toast" hidden role="status"></div>
 <aside class="installbalk" id="installbalk" hidden aria-label="GARAJ als app installeren">
-  <img src="icon-192.png" alt="" width="48" height="48">
-  <div class="ib-tekst"><strong>GARAJ op je beginscherm</strong><span id="ibUitleg">Open de recepten met één tik, net als een app.</span></div>
+  <img src="/icon-192.png" alt="" width="48" height="48">
+  <div class="ib-tekst"><strong>GARAJ op je beginscherm</strong><span id="ibUitleg">Open de recepten met één tik en kook ook zonder internet.</span></div>
   <button class="ib-ja" id="ibJa" type="button">Installeren</button>
   <button class="ib-nee" id="ibNee" type="button" aria-label="Niet nu">✕</button>
 </aside>
-
-<script>
-/* =====================================================================
-   OVER GARAJ. Laat leeg ("") om de pagina te verbergen.
-   Elke regel in de lijst wordt een alinea.
-   ===================================================================== */
-const OVER = [];
-
-/* =====================================================================
-   GANGEN. Een gang verschijnt pas zodra er een recept in staat. foto = beeld op de gangkaart.
-   ===================================================================== */
-const GANGEN = [
-  { id: "soep",         naam: "Soepen & voorgerechten", kort: "Soepen",         foto: "gang-soep.jpg" },
-  { id: "hoofdgerecht", naam: "Hoofdgerechten",         kort: "Hoofdgerechten", foto: "gang-hoofdgerecht.jpg" },
-  { id: "bijgerecht",   naam: "Bijgerechten & salades", kort: "Bijgerechten",   foto: "gang-bijgerecht.jpg" },
-  { id: "dessert",      naam: "Desserts",               kort: "Desserts" }
-];
-
-/* LABELS: tweede ingang naast de gang. */
-const LABELS = {
-  "vooraf":      "vooraf te maken",
-  "barbecue":    "barbecue",
-  "vegetarisch": "vegetarisch",
-  "comfortfood": "comfortfood",
-  "pittig":      "pittig",
-  "laag-traag":  "laag en traag"
-};
-
-/* =====================================================================
-   RECEPTEN. Nieuw recept? Kopieer een blok en vul het in.
-   ingredienten: [hoeveelheid, eenheid, naam, toelichting]
-     hoeveelheid null + eenheid "" = komt in de regel "Naar smaak"
-     hoeveelheid null + eenheid "naar wens" = eigen regel zonder getal
-     hoeveelheid [1, 2] = van-tot
-   stappen: timer = minuten voor de kookwekker
-   foto: pad naar de foto (bijv. "bolognesesaus.jpg"); leeg = illustratie
-   toegevoegd: datum "JJJJ-MM-DD"; nieuw-label verschijnt 60 dagen
-   lekkerBij: slug van een ander recept, of vrije tekst
-   ===================================================================== */
-const RECEPTEN = [
-  {
-    slug: "griekse-witte-koolsalade",
-    titel: "Griekse witte koolsalade",
-    gang: "bijgerecht",
-    labels: ["vooraf", "barbecue", "vegetarisch"],
-    favoriet: true,
-    foto: "griekse-witte-koolsalade.jpg",
-    toegevoegd: "",
-    noot: "Na jarenlang experimenteren, weinig genieten en veel weggooien is het eindelijk gelukt. Heerlijk als het 30 graden is en de barbecue aan staat.",
-    intro: "Het basisrecept om witte kool op een Griekse manier te bereiden. Naar wens snijd je er nog een worteltje in julienne, wat paprika of komkommer bij.",
-    tijd: "± 3 dagen, waarvan 20 minuten werk",
-    porties: 1, portieWoord: ["kool", "kolen"],
-    benodigdheden: ["Vergiet", "Kom"],
-    onderdelen: [{ kop: null, items: [
-      [1, "", "witte kool", "vers en ongesneden"],
-      [6, "el", "azijn", "ik gebruik witte wijnazijn"],
-      [4, "el", "olijfolie"],
-      [2, "el", "zout"],
-      [1, "el", "suiker", "optioneel; ik laat hem weg, ik houd van zuur"],
-      [0.5, "l", "mineraalwater met bubbels"]
-    ]}],
-    stappen: [
-      { kop: "Snijden", tekst: "Snijd de kool door de helft en snijd het harde gedeelte er in een driehoek uit. Snijd de kool in de lengte in dunne stukken. Raspen kan ook, maar ongelijke stukjes vind ik juist lekker. Doe de kool in het vergiet." },
-      { kop: "Zouten en kneden", tijd: "5 min + 30 min uitlekken", timer: 30, timerNaam: "Kool uitlekken", tekst: "Strooi het zout over de kool en kneed het er 5 minuten stevig in. In kleinere porties kneden is minder zwaar en net zo effectief. Laat de kool een half uur uitlekken boven de gootsteen of een pan en gooi het vocht weg." },
-      { kop: "Aanmaken", tijd: "24 uur", tekst: "Giet de azijn, de olijfolie en eventueel de suiker over de kool. Kneed nog 2 minuten en zet de kool afgedekt 24 uur in de koelkast." },
-      { kop: "Mineraalwater", tijd: "minimaal 48 uur", tekst: "Je ruikt nu een sterke koolgeur en de kool smaakt erg zout. Dat hoort zo. Giet het mineraalwater erover, schep om met twee lepels en zet de kool minimaal 48 uur weg. Tot 5 dagen in de koelkast geeft het beste resultaat." }
-    ],
-    tip: "Na het mineraalwater verandert de geur snel. Blijf proeven. Te zout? Spoel de kool in het vergiet met koud water. Te zuur? Spoelen of een beetje suiker toevoegen.",
-    lekkerBij: ["Alles van de barbecue", "kip-paprikasch"]
-  },
-  {
-    slug: "bolognesesaus",
-    titel: "Bolognesesaus",
-    gang: "hoofdgerecht",
-    labels: ["comfortfood", "laag-traag"],
-    favoriet: true,
-    foto: "bolognesesaus.jpg",
-    toegevoegd: "",
-    noot: "Het geheim zit in de tomatenpuree die je apart in de pan bakt, en in de pasta die je met een scheut kookwater door de saus roert.",
-    intro: "Een volle saus die minimaal een uur zachtjes trekt. Langer mag altijd, zolang alles onder vocht staat.",
-    tijd: "± 1 uur 20 min",
-    porties: 4, portieWoord: ["persoon", "personen"],
-    onderdelen: [{ kop: null, items: [
-      [400, "g", "gemengd gehakt"],
-      [1, "", "wortel"],
-      [1, "", "ui"],
-      [1, "", "stengel bladselderij"],
-      [[1, 2], "dl", "rode wijn", "fruitig"],
-      [1, "", "laurierblad"],
-      [0.5, "l", "runderbouillon"],
-      [null, "", "tomatenpuree"],
-      [null, "", "Italiaanse kruiden"],
-      [null, "", "olijfolie"]
-    ]}],
-    stappen: [
-      { kop: "Dichtschroeien en blussen", tekst: "Verhit een beetje olijfolie in een ruime pan. Bak het gehakt met Italiaanse kruiden tot het dichtgeschroeid is; niet rul bakken. Maak het gehakt tijdens het bakken los met een garde. Blus met de wijn en roer een paar minuten tot de alcohol verdampt is." },
-      { kop: "Groente en tomatenpuree", tijd: "± 9 min", timer: 9, timerNaam: "Groente en puree", tekst: "Voeg de fijngehakte wortel, ui en bladselderij toe en bak 2 minuten mee. Maak een plekje vrij in de pan en bak de tomatenpuree daar 2 minuten direct in de pan; zo wordt hij zoeter. Meng alles en bak nog 5 minuten op middelhoog vuur." },
-      { kop: "Laten trekken", tijd: "minimaal 1 uur", timer: 60, timerNaam: "Bolognese trekken", tekst: "Voeg runderbouillon toe tot alles onder staat. Leg het laurierblad erin en zet de deksel iets schuin op de pan. Laat minimaal een uur zachtjes trekken. Je kunt de saus uitbreiden met gezeefde tomaten of een potje arrabbiatasaus." }
-    ],
-    tip: "Lekker uit te breiden met champignons. Roer de spaghetti of andere pasta door de saus met een scheut kookwater van de pasta.",
-    lekkerBij: ["Spaghetti of andere pasta, met een scheut kookwater door de saus"]
-  },
-  {
-    slug: "kip-paprikasch",
-    titel: "Garaj's kip-paprikasch",
-    gang: "hoofdgerecht",
-    labels: ["comfortfood", "laag-traag"],
-    favoriet: true,
-    foto: "kip-paprikasch.jpg",
-    toegevoegd: "",
-    noot: "Mijn eigen special. Een gladde paprikasaus door de groenten te pureren, een uur laten intrekken en verse frieten erbij.",
-    intro: "Kip in een gladde saus van paprika, ui en flink wat paprikapoeder. Neem de tijd: laag vuur en om de vijf minuten roeren.",
-    tijd: "± 1 uur 45 min",
-    porties: 4, portieWoord: ["persoon", "personen"],
-    onderdelen: [
-      { kop: null, items: [
-        [800, "g", "kipfilet"],
-        [2, "", "rode paprika's"],
-        [2, "", "middelgrote uien"],
-        [3, "", "tenen knoflook"],
-        [2, "", "kipbouillonblokjes", "voor 1 liter bouillon"],
-        [1, "", "klein blikje tomatenpuree"],
-        [null, "naar wens", "verse peterselie"]
-      ]},
-      { kop: "Kruiden en verder", items: [
-        [null, "naar wens", "paprikapoeder", "flink"],
-        [null, "", "Vegeta"],
-        [null, "", "witte peper"],
-        [null, "", "kookroom"],
-        [null, "", "bloem om te binden"],
-        [null, "", "olijfolie, roomboter en Croma"]
-      ]}
-    ],
-    stappen: [
-      { kop: "Bouillon", tekst: "Maak 1 liter kipbouillon en laat hem afkoelen. Koud hoeft niet." },
-      { kop: "Kip aanbraden", tekst: "Snijd de kipfilet schoon en in blokjes. Kruid goed met Vegeta en witte peper. Bak de kip in Croma in een pan met een goede antiaanbaklaag. De kip hoeft niet gaar, wel mooi bruin van buiten. Laat afkoelen op een bord." },
-      { kop: "Groentepap", tijd: "± 15 min", timer: 15, timerNaam: "Groentepap", tekst: "Doe een beetje olijfolie en roomboter in dezelfde pan. Snijd de uien en paprika's grof en bak ze zacht zonder dat ze kleuren. Bak daarna de fijngesneden knoflook nog 5 minuten mee. Pureer alles met de staafmixer tot een gladde pap." },
-      { kop: "Samenvoegen en laten trekken", tijd: "minimaal 1 uur", timer: 60, timerNaam: "Paprikasch trekken", tekst: "Doe olijfolie in de pan met de kip en flink wat paprikapoeder en bak mee. Roer de tomatenpuree erdoor en bak 5 minuten door. Voeg de bouillon, de groentepap en de fijngesneden peterselie toe. Laat minimaal een uur intrekken op laag vuur en roer om de 5 minuten." },
-      { kop: "Binden en serveren", tekst: "Maak verse frieten erbij. Is de kip-paprikasch nog te waterig? Schud wat bloem door een zeefje boven de pan en roer tot de saus gebonden is." }
-    ],
-    tip: "De groentepap is het hart van dit gerecht. Laat de uien en paprika's echt zacht worden voordat je mixt.",
-    lekkerBij: ["Verse frieten", "griekse-witte-koolsalade"]
-  },
-  {
-    slug: "kip-boursin",
-    titel: "Kip boursin",
-    gang: "hoofdgerecht",
-    labels: ["comfortfood", "laag-traag"],
-    favoriet: false,
-    foto: "kip-boursin.jpg",
-    toegevoegd: "",
-    intro: "Kip die anderhalf uur zachtjes gaart in champignonsoep en wordt afgemaakt met Boursin, sambal en kookroom.",
-    tijd: "± 2 uur",
-    porties: 4, portieWoord: ["persoon", "personen"],
-    onderdelen: [{ kop: null, items: [
-      [800, "g", "kipfilet"],
-      [1, "l", "champignonsoep", "ik gebruik Unox"],
-      [2, "", "middelgrote uien"],
-      [1, "", "pakje Boursin", "150 g, knoflook en fijne kruiden"],
-      [null, "", "Vegeta"],
-      [null, "", "witte peper"],
-      [null, "", "sambal"],
-      [null, "", "kookroom"],
-      [null, "", "bloem om te binden"],
-      [null, "", "olie, roomboter en Croma"]
-    ]}],
-    stappen: [
-      { kop: "Kip aanbraden", tekst: "Snijd de kipfilet schoon en in blokjes. Kruid goed met Vegeta en witte peper. Bak de kip in Croma in een pan met een goede antiaanbaklaag. De kip hoeft niet gaar, wel mooi bruin van buiten. Laat afkoelen op een bord." },
-      { kop: "Uien", tekst: "Snijd de uien klein en bak ze in olie en roomboter. Ze mogen niet bruin worden, wel zacht. Voeg de kip weer toe." },
-      { kop: "Garen", tijd: "minimaal 1,5 uur", timer: 90, timerNaam: "Kip boursin garen", tekst: "Voeg de champignonsoep toe en laat alles op laag vuur minimaal anderhalf uur garen. Roer af en toe." },
-      { kop: "Afmaken", tekst: "Roer de Boursin door de saus tot hij helemaal gesmolten is. Voeg daarna een beetje sambal en kookroom toe. Bind eventueel met een beetje bloem." }
-    ],
-    lekkerBij: ["Rijst of verse frieten"]
-  },
-  {
-    slug: "servische-bonensoep",
-    titel: "Servische bonensoep",
-    gang: "soep",
-    labels: ["pittig", "comfortfood"],
-    favoriet: false,
-    foto: "servische-bonensoep.jpg",
-    toegevoegd: "",
-    intro: "Stevige soep met pittige Debrecener worst, witte bonen en paprika. Gebonden en afgemaakt met een scheut room.",
-    tijd: "± 45 min",
-    porties: 4, portieWoord: ["persoon", "personen"],
-    onderdelen: [
-      { kop: null, items: [
-        [null, "naar wens", "Debrecener worst", "pittige worst uit Hongarije en de Balkan"],
-        [1, "", "grote ui", "gesnipperd"],
-        [[1, 2], "", "preien", "gesneden, met veel groen"],
-        [2, "", "middelgrote wortels"],
-        [1, "", "teen knoflook", "in plakjes"],
-        [1, "", "rode paprika", "ontveld"],
-        [1, "", "aardappel", "in kleine blokjes"],
-        [200, "ml", "tomatensaus"],
-        [720, "g", "witte bonen in tomatensaus"],
-        [1, "", "kipbouillonblokje"]
-      ]},
-      { kop: "Kruiden en afmaken", items: [
-        [null, "", "Vegeta"],
-        [null, "", "paprikapoeder"],
-        [null, "", "chilipoeder"],
-        [null, "", "tijm"],
-        [null, "", "oregano"],
-        [null, "", "bloem"],
-        [null, "", "kookroom"]
-      ]}
-    ],
-    stappen: [
-      { kop: "Groente aanbakken", tekst: "Verhit olie in een soeppan. Bak de ui, prei, wortel, knoflook en paprika met Vegeta. De groente mag niet bruin worden; blus zo nodig met een scheut water." },
-      { kop: "Water, worst en kruiden", tekst: "Vul aan met water en voeg de worst in kleine plakjes toe, samen met de aardappel en de tomatensaus. Voeg paprikapoeder, chilipoeder, tijm en oregano toe en verkruimel het bouillonblokje erboven." },
-      { kop: "Bonen", tekst: "Voeg de bonen toe. Roer voorzichtig, zodat ze heel blijven." },
-      { kop: "Binden en afmaken", tekst: "Schud bloem door een zeefje boven de soep tot de vetoogjes weg zijn. Maak af met kookroom en laat 10 seconden opkoken." }
-    ],
-    lekkerBij: ["Vers brood"]
-  },
-  {
-    slug: "grieks-knoflookbrood-fetadip",
-    titel: "Grieks knoflookbrood met pittige paprika-fetadip",
-    gang: "soep",
-    labels: ["pittig", "vegetarisch"],
-    favoriet: false,
-    foto: "grieks-knoflookbrood-fetadip.jpg",
-    toegevoegd: "2026-10-10",
-    intro: "Knapperige ciabatta met boter van geroosterde knoflook, met daarbij een romige dip van feta, Griekse yoghurt, geroosterde paprika en chilivlokken. Terwijl de knoflook in de oven zit, maak je de dip.",
-    tijd: "± 45 min, waarvan 20 minuten werk",
-    porties: 1, portieWoord: ["schaal", "schalen"],
-    benodigdheden: ["Keukenmachine", "Knoflookpers", "Bakblik met bakpapier", "Kom"],
-    onderdelen: [
-      { kop: "Pittige paprika-fetadip", items: [
-        [275, "g", "feta", "zo goed mogelijk, liefst Griekse feta uit het vat"],
-        [200, "g", "Griekse yoghurt"],
-        [1, "", "geroosterde rode paprika", "zelf geroosterd of uit een pot"],
-        [1, "", "teen knoflook"],
-        [2, "tl", "chilivlokken", "of 1 verse chilipeper"],
-        [2, "el", "olijfolie"]
-      ]},
-      { kop: "Knoflookbrood", items: [
-        [1, "", "afbakciabatta"],
-        [100, "g", "ongezouten roomboter", "op kamertemperatuur"],
-        [0.5, "", "bol knoflook", "tenen ongepeld"],
-        [null, "naar wens", "verse peterselie", "een paar takjes, fijngehakt"],
-        [1, "tl", "cayennepeper"],
-        [null, "", "zeezout uit de molen"]
-      ]}
-    ],
-    stappen: [
-      { kop: "Knoflook roosteren", tijd: "20–25 min", timer: 25, timerNaam: "Knoflook roosteren", tekst: "Verwarm de oven voor op 200 °C. Leg de ongepelde knoflooktenen op het bakblik met bakpapier en rooster ze in het midden van de oven tot de schil kleurt en de knoflook binnenin zacht is. Maak intussen de dip." },
-      { kop: "Dip: knoflook en paprika", tekst: "Pers de verse teen knoflook boven de keukenmachine, zodat hij fijn genoeg is na het mixen. Voeg de geroosterde paprika toe. Paprika uit een pot? Laat hem eerst goed uitlekken en dep hem droog, anders wordt de dip te dun." },
-      { kop: "Dip: olie, chili en yoghurt", tekst: "Voeg de olijfolie en de chilivlokken toe en mix 10 seconden. Voeg de Griekse yoghurt toe en mix nog 10 seconden." },
-      { kop: "Dip: feta", tekst: "Verkruimel de feta erboven en mix een laatste keer tot de dip glad en romig is. Niet te lang doordraaien; dan wordt feta korrelig. Zet de dip afgedekt in de koelkast tot het brood klaar is." },
-      { kop: "Knoflookboter", tekst: "Roer de roomboter los in een kom. Knijp de geroosterde knoflook uit de schil en voeg hem met de peterselie toe. Prak de knoflook fijn en roer alles goed door elkaar. Breng op smaak met cayennepeper en zeezout." },
-      { kop: "Brood bakken", tijd: "8–10 min", timer: 10, timerNaam: "Knoflookbrood bakken", tekst: "Snijd de ciabatta in plakken en smeer ze royaal in met de knoflookboter. Leg ze op het bakblik en bak ze in het midden van de oven goudbruin en knapperig." },
-      { kop: "Serveren", tekst: "Schep de dip in een schaal, giet er een scheutje olijfolie over en strooi er eventueel wat extra chilivlokken op. Serveer met het warme knoflookbrood." }
-    ],
-    tip: "De dip kun je een dag van tevoren maken; afgedekt in de koelkast blijft hij 3 tot 4 dagen goed, maar nooit langer dan de datum van de yoghurt. Invriezen raad ik af. Het brood kun je ook vooraf smeren en koel bewaren; warm het op in een voorverwarmde oven, afgedekt met aluminiumfolie.",
-    lekkerBij: ["Een borrelplank met olijven", "griekse-witte-koolsalade"]
-  }
-];
-
-/* ===================================================================== */
-const $ = s => document.querySelector(s);
-const app = $("#app");
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const gangVan = id => GANGEN.find(g => g.id === id);
-const actieveGangen = () => GANGEN.filter(g => RECEPTEN.some(r => r.gang === g.id));
-const volgorde = () => actieveGangen().flatMap(g => RECEPTEN.filter(r => r.gang === g.id));
-const isNieuw = r => r.toegevoegd && (Date.now() - new Date(r.toegevoegd)) / 864e5 <= 60;
-const datum = d => new Date(d).toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" });
-const ICON_KLOK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>`;
-
-/* Geometrisch bord per recept, in de kleur van de gang. */
-function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
-function plate(seed) {
-  let h = hash(seed); const rnd = () => ((h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0) / 4294967296);
-  const c = 100, rot = Math.floor(rnd() * 4) * 90;
-  const pt = (r, a) => [(c + r * Math.cos(a * Math.PI / 180)).toFixed(1), (c + r * Math.sin(a * Math.PI / 180)).toFixed(1)];
-  const arc = (r, a0, a1) => { const [x0, y0] = pt(r, a0), [x1, y1] = pt(r, a1); return `M${x0} ${y0} A${r} ${r} 0 ${a1 - a0 > 180 ? 1 : 0} 1 ${x1} ${y1}`; };
-  const seg = 60 + Math.floor(rnd() * 3) * 30, [sx, sy] = pt(92, seg);
-  const rings = [78, 60, 42].map((r, i) => {
-    const s = Math.floor(rnd() * 8) * 45, len = 90 + Math.floor(rnd() * 4) * 45;
-    return `<path d="${arc(r, s, s + len)}" fill="none" stroke="var(--g, var(--accent))" stroke-width="${i === 0 ? 3 : 2}" stroke-linecap="round" opacity="${1 - i * 0.25}"/>`;
-  }).join("");
-  return `<svg viewBox="0 0 200 200" aria-hidden="true"><g transform="rotate(${rot} 100 100)">
-    <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-opacity=".18" stroke-width="1.5"/>
-    <path d="M100 100 L192 100 A92 92 0 0 1 ${sx} ${sy} Z" fill="var(--g, var(--accent))" opacity=".9"/>
-    ${rings}<circle cx="100" cy="100" r="14" fill="currentColor" opacity=".85"/></g></svg>`;
-}
-/* Foto als die er is, anders het bord. */
-function beeld(r, extra = "") {
-  const inner = r && r.foto ? `<img src="${esc(r.foto)}" alt="Sfeerbeeld van ${esc(r.titel)}" loading="lazy">` : plate(r ? r.slug : "garaj-home");
-  return `<span class="beeld ${r ? "g-" + r.gang : ""} ${extra}">${inner}</span>`;
-}
-
-function fmt(n) {
-  const frac = [[0.25, "¼"], [0.5, "½"], [0.75, "¾"], [1 / 3, "⅓"], [2 / 3, "⅔"]];
-  const whole = Math.floor(n + 1e-9), rest = n - whole;
-  if (rest < 0.05) return String(whole);
-  if (whole < 10) for (const [v, s] of frac) if (Math.abs(rest - v) < 0.05) return (whole ? whole : "") + s;
-  return (Math.round(n * 10) / 10).toLocaleString("nl-NL");
-}
-const qty = (q, f) => Array.isArray(q) ? `${fmt(q[0] * f)}–${fmt(q[1] * f)}` : fmt(q * f);
-const isSmaak = it => it[0] === null && !it[1];
-
-function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 2200); }
-
-/* ---------- Navigatie ---------- */
-function renderNav(current) {
-  const items = [["home", "Favorieten"], ["recepten", "Recepten"]];
-  if (OVER.length) items.push(["over", "Over"]);
-  $("#nav").innerHTML = items.map(([id, t]) => `<li><a href="#${id}" ${id === current ? 'aria-current="page"' : ""}>${t}</a></li>`).join("");
-  $("#footnav").innerHTML = items.map(([id, t]) => `<a href="#${id}">${t}</a>`).join("");
-}
-
-/* ---------- Home ---------- */
-function home() {
-  const favs = RECEPTEN.filter(r => r.favoriet);
-  const nieuw = RECEPTEN.filter(isNieuw);
-  return `
-  <div class="spine">
-    <section class="hero">
-      <div>
-        <div class="eyebrow">Zelf gekookt, steeds weer gemaakt</div>
-        <h1>Weinig recepten.<br><span>Allemaal goed.</span></h1>
-      </div>
-      <div class="hero-art"><span class="beeld"><img src="hero.jpg" alt="Pan met paprikasaus, omringd door fijngesneden ui, paprika, peterselie en knoflook"></span></div>
-      <p class="lead">Geen eindeloze lijst, maar gerechten die ik zelf heb uitgeprobeerd en waar ik echt van geniet.</p>
-    </section>
-    ${nieuw.length ? `<section style="padding-bottom:28px"><div class="newstrip"><span class="badge">Nieuw</span>${nieuw.map(r => `<a class="chip" href="#${r.slug}">${esc(r.titel)}</a>`).join("")}</div></section>` : ""}
-    <figure class="banner"><img src="tafel.jpg" alt="Gedekte tafel vol Griekse en mediterrane gerechten, dips en brood" loading="lazy"></figure>
-    <section class="plane" aria-labelledby="fav-h">
-      <div class="section-head">
-        <h2 id="fav-h">Mijn favorieten</h2>
-        <p>De recepten die ik het vaakst maak, met een korte noot waarom.</p>
-      </div>
-      <div class="favs">
-        ${favs.map(r => `
-          <a class="fav g-${r.gang}" href="#${r.slug}">
-            ${beeld(r)}
-            <div><div class="eyebrow">${esc(gangVan(r.gang).kort)}</div><h3>${esc(r.titel)}</h3><p class="note">${esc(r.noot)}</p></div>
-            <span class="go">Naar recept →</span>
-          </a>`).join("")}
-      </div>
-    </section>
-    <section class="block" aria-labelledby="gang-h">
-      <div class="section-head"><h2 id="gang-h">Per gang</h2></div>
-      <div class="course-grid">
-        ${actieveGangen().map(g => {
-          const lijst = RECEPTEN.filter(r => r.gang === g.id);
-          return `<div class="course g-${g.id}">
-            ${g.foto ? `<img class="g-foto" src="${esc(g.foto)}" alt="" loading="lazy">` : ""}
-            <a href="#${g.id}"><strong>${esc(g.naam)}</strong><span>→</span></a>
-            <ul>${lijst.map(r => `<li><a href="#${r.slug}">${esc(r.titel)}</a></li>`).join("")}</ul>
-          </div>`;
-        }).join("")}
-      </div>
-    </section>
-  </div>`;
-}
-
-/* ---------- Recepten met zoeken en filters ---------- */
-let filter = { gang: null, label: null, q: "" };
-function recepten() {
-  const gebruikteLabels = Object.keys(LABELS).filter(l => RECEPTEN.some(r => (r.labels || []).includes(l)));
-  return `
-  <div class="spine">
-    <section class="cat-head met-foto">
-      <div class="cat-tekst">
-      <div class="eyebrow">Allemaal zelf gekookt</div>
-      <h1>Recepten</h1>
-      <label class="zoek" for="zoekveld">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
-        <input id="zoekveld" type="search" placeholder="Zoek op gerecht of ingrediënt, bijv. paprika" value="${esc(filter.q)}" autocomplete="off">
-      </label>
-      <div class="chips" role="group" aria-label="Gang">
-        <button class="chip" data-gang="" aria-pressed="${!filter.gang}">Alle gangen</button>
-        ${actieveGangen().map(g => `<button class="chip g-${g.id}" data-gang="${g.id}" aria-pressed="${filter.gang === g.id}">${esc(g.kort)}</button>`).join("")}
-      </div>
-      <div class="chips" role="group" aria-label="Label">
-        ${gebruikteLabels.map(l => `<button class="chip label" data-label="${l}" aria-pressed="${filter.label === l}">${esc(LABELS[l])}</button>`).join("")}
-      </div>
-      </div>
-      <span class="beeld cat-art"><img src="snijplank.jpg" alt="Snijplank met fijngesneden ui, wortel, bleekselderij en peterselie"></span>
-    </section>
-    <p class="result" id="result" aria-live="polite"></p>
-    <div class="list" id="lijst"></div>
-  </div>`;
-}
-function tekstVan(r) {
-  return [r.titel, r.intro, ...(r.labels || []).map(l => LABELS[l]), ...r.onderdelen.flatMap(o => o.items.map(i => i[2]))].join(" ").toLowerCase();
-}
-function renderLijst() {
-  const q = filter.q.trim().toLowerCase();
-  const lijst = volgorde().filter(r =>
-    (!filter.gang || r.gang === filter.gang) &&
-    (!filter.label || (r.labels || []).includes(filter.label)) &&
-    (!q || q.split(/\s+/).every(w => tekstVan(r).includes(w))));
-  const delen = [filter.gang && gangVan(filter.gang).naam.toLowerCase(), filter.label && `#${LABELS[filter.label]}`, q && `"${filter.q.trim()}"`].filter(Boolean);
-  $("#result").textContent = delen.length ? "Gefilterd op " + delen.join(" · ") : "";
-  $("#lijst").innerHTML = lijst.length ? lijst.map(r => `
-    <a class="card g-${r.gang}" href="#${r.slug}">
-      <div class="art">${beeld(r)}${isNieuw(r) ? '<span class="badge">Nieuw</span>' : ""}</div>
-      <div class="body"><div class="eyebrow">${esc(gangVan(r.gang).kort)}</div><h3>${esc(r.titel)}</h3><p class="meta">${esc(r.tijd || "")}</p><p>${esc(r.intro)}</p></div>
-    </a>`).join("") : `<p class="leeg">Geen recept gevonden. Probeer een ander woord of zet de filters uit.</p>`;
-}
-function bindRecepten(focus) {
-  renderLijst();
-  const z = $("#zoekveld");
-  z.oninput = () => { filter.q = z.value; renderLijst(); };
-  document.querySelectorAll("[data-gang]").forEach(b => b.onclick = () => {
-    filter.gang = b.dataset.gang || null;
-    document.querySelectorAll("[data-gang]").forEach(x => x.setAttribute("aria-pressed", String((x.dataset.gang || null) === filter.gang)));
-    renderLijst();
-  });
-  document.querySelectorAll("[data-label]").forEach(b => b.onclick = () => {
-    filter.label = filter.label === b.dataset.label ? null : b.dataset.label;
-    document.querySelectorAll("[data-label]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.label === filter.label)));
-    renderLijst();
-  });
-  if (focus) z.focus();
-}
-
-/* ---------- Recept ---------- */
-let huidig = null, factor = 1;
-function recept(r) {
-  huidig = r; factor = 1;
-  const g = gangVan(r.gang), alle = volgorde(), i = alle.indexOf(r);
-  const vorig = alle[i - 1], volgend = alle[i + 1];
-  const bij = (r.lekkerBij || []).map(x => RECEPTEN.find(y => y.slug === x) || x);
-  return `
-  <div class="spine r-wrap g-${r.gang}">
-    <p class="crumbs"><a href="#${g.id}">← ${esc(g.naam)}</a></p>
-    <section class="r-head">
-      <div>
-        <div class="eyebrow">${esc(g.kort)}${isNieuw(r) ? ' <span class="badge" style="margin-left:8px">Nieuw</span>' : ""}</div>
-        <h1>${esc(r.titel)}</h1>
-        <p class="intro">${esc(r.intro)}</p>
-        <div class="facts">
-          ${r.tijd ? `<span>Tijd <b>${esc(r.tijd)}</b></span>` : ""}
-          <span>Stappen <b>${r.stappen.length}</b></span>
-          ${r.toegevoegd ? `<span>Toegevoegd <b>${datum(r.toegevoegd)}</b></span>` : ""}
-        </div>
-        ${(r.labels || []).length ? `<div class="labels">${r.labels.map(l => `<a class="chip label" href="#label-${l}">${esc(LABELS[l])}</a>`).join("")}</div>` : ""}
-      </div>
-      <figure class="r-art" style="margin:0">${beeld(r)}${r.foto ? "<figcaption>Sfeerbeeld, gemaakt met AI</figcaption>" : ""}</figure>
-    </section>
-    <section class="plane">
-      <div class="tabs" role="tablist" aria-label="Recept">
-        <button role="tab" data-tab="ingr" aria-selected="true">Ingrediënten</button>
-        <button role="tab" data-tab="bereiding" aria-selected="false">Bereiding</button>
-      </div>
-      <div class="r-body">
-        <div class="panel-ingr actief" data-panel="ingr">
-          <h2>Ingrediënten</h2>
-          <div class="servings" role="group" aria-label="Aantal porties">
-            <button id="minder" aria-label="Minder">−</button>
-            <output id="portie" aria-live="polite"></output>
-            <button id="meer" aria-label="Meer">+</button>
-          </div>
-          <div id="ingr"></div>
-          ${r.benodigdheden ? `<p class="tools"><b>Benodigdheden:</b> ${r.benodigdheden.map(esc).join(", ")}</p>` : ""}
-          <button class="lijst-btn" id="kopieer">Kopieer boodschappenlijst</button>
-          <div id="copyfallback"></div>
-        </div>
-        <div data-panel="bereiding">
-          <div class="steps-head">
-            <h2>Bereiding</h2>
-            <button class="cook-btn" id="cookOpen">Start kookmodus</button>
-          </div>
-          <ol class="steps">
-            ${r.stappen.map((s, i) => `
-              <li class="step" data-i="${i}" tabindex="0">
-                <div><h3>${esc(s.kop)}${s.tijd ? `<span class="t">${esc(s.tijd)}</span>` : ""}</h3><p>${esc(s.tekst)}</p>
-                ${s.timer ? `<button class="timer-btn" data-timer="${i}">${ICON_KLOK} Wekker ${s.timer} min</button>` : ""}</div>
-              </li>`).join("")}
-          </ol>
-          <p class="hint">Tik op een stap om hem af te vinken.</p>
-          ${r.tip ? `<div class="tip"><strong>Tip</strong>${esc(r.tip)}</div>` : ""}
-        </div>
-      </div>
-    </section>
-    ${bij.length ? `<section class="after"><div>
-      <h2>Lekker bij</h2>
-      <ul class="bij">${bij.map(b => typeof b === "string"
-        ? `<li><span class="dot"></span><span>${esc(b)}</span></li>`
-        : `<li class="g-${b.gang}">${beeld(b)}<a href="#${b.slug}">${esc(b.titel)} →</a></li>`).join("")}</ul>
-    </div></section>` : ""}
-    <nav class="pager" aria-label="Andere recepten">
-      ${vorig ? `<a href="#${vorig.slug}"><small>← Vorig recept</small><strong>${esc(vorig.titel)}</strong></a>` : "<span></span>"}
-      ${volgend ? `<a class="next" href="#${volgend.slug}"><small>Volgend recept →</small><strong>${esc(volgend.titel)}</strong></a>` : "<span></span>"}
-    </nav>
-  </div>`;
-}
-
-function renderIngr() {
-  const r = huidig, n = r.porties * factor;
-  $("#portie").textContent = `${fmt(n)} ${n === 1 ? r.portieWoord[0] : r.portieWoord[1]}`;
-  $("#minder").disabled = factor <= 0.5 + 1e-9;
-  const checked = new Set([...document.querySelectorAll("#ingr input:checked")].map(i => i.id));
-  $("#ingr").innerHTML = r.onderdelen.map((o, oi) => {
-    const vast = o.items.filter(it => !isSmaak(it)), smaak = o.items.filter(isSmaak);
-    const idS = `s-${oi}`;
-    return `${o.kop ? `<h3>${esc(o.kop)}</h3>` : ""}
-    <ul class="ingr">${vast.map(([q, u, naam, x], ii) => {
-      const id = `i-${oi}-${ii}`;
-      const hoeveel = q === null ? u : `${qty(q, factor)}${u ? " " + u : ""}`;
-      return `<li><label for="${id}"><input type="checkbox" id="${id}" ${checked.has(id) ? "checked" : ""}>
-        <span class="q">${esc(hoeveel)}</span>
-        <span>${esc(naam)}${x ? `<br><span class="x">${esc(x)}</span>` : ""}</span></label></li>`;
-    }).join("")}
-    ${smaak.length ? `<li class="smaak"><label for="${idS}"><input type="checkbox" id="${idS}" ${checked.has(idS) ? "checked" : ""}>
-      <span><span class="k">Naar smaak</span>${smaak.map(i => esc(i[2])).join(" · ")}</span></label></li>` : ""}
-    </ul>`;
-  }).join("");
-}
-
-function boodschappen() {
-  const r = huidig, n = r.porties * factor;
-  const regels = [`${r.titel} (${fmt(n)} ${n === 1 ? r.portieWoord[0] : r.portieWoord[1]})`];
-  r.onderdelen.forEach(o => o.items.forEach(([q, u, naam]) => {
-    regels.push(`- ${q === null ? "" : qty(q, factor) + (u ? " " + u : "") + " "}${naam}`);
-  }));
-  return regels.join("\n");
-}
-
-function bindRecept() {
-  renderIngr();
-  const stap = huidig.porties === 1 ? 0.5 : 1 / huidig.porties;
-  $("#minder").onclick = () => { factor = Math.max(0.5, factor - stap); renderIngr(); };
-  $("#meer").onclick = () => { factor += stap; renderIngr(); };
-  document.querySelectorAll(".step").forEach(el => {
-    const t = e => { if (e.target.closest(".timer-btn")) return; el.classList.toggle("done"); };
-    el.onclick = t; el.onkeydown = e => { if (e.target === el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); t(e); } };
-  });
-  document.querySelectorAll("[data-timer]").forEach(b => b.onclick = () => startTimer(huidig.stappen[+b.dataset.timer]));
-  $("#cookOpen").onclick = () => openCook(0);
-  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => {
-    document.querySelectorAll("[data-tab]").forEach(x => x.setAttribute("aria-selected", String(x === b)));
-    document.querySelectorAll("[data-panel]").forEach(p => p.classList.toggle("actief", p.dataset.panel === b.dataset.tab));
-  });
-  $("#kopieer").onclick = () => {
-    const tekst = boodschappen();
-    const fallback = () => {
-      $("#copyfallback").innerHTML = `<textarea class="copybox" id="copybox" readonly aria-label="Boodschappenlijst">${esc(tekst)}</textarea>`;
-      const ta = $("#copybox"); ta.focus(); ta.select();
-      toast("Selecteer en kopieer de lijst");
-    };
-    try { navigator.clipboard.writeText(tekst).then(() => toast("Boodschappenlijst gekopieerd"), fallback); } catch (e) { fallback(); }
-  };
-}
-
-/* ---------- Kookwekkers ---------- */
-const timers = [];
-let tick = null, audio = null;
-function startTimer(s) {
-  try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); audio.resume(); } catch (e) {}
-  timers.push({ id: Date.now() + Math.random(), naam: s.timerNaam || s.kop, eind: Date.now() + s.timer * 60000, klaar: false });
-  toast(`Wekker gezet: ${s.timer} min`);
-  drawDock(); if (!tick) tick = setInterval(drawDock, 1000);
-}
-function piep() {
-  if (!audio) return;
-  try {
-    [0, 0.35, 0.7].forEach(t => {
-      const o = audio.createOscillator(), g = audio.createGain();
-      o.frequency.value = 880; o.connect(g); g.connect(audio.destination);
-      g.gain.setValueAtTime(0.25, audio.currentTime + t); g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + t + 0.3);
-      o.start(audio.currentTime + t); o.stop(audio.currentTime + t + 0.3);
-    });
-  } catch (e) {}
-  try { navigator.vibrate?.([300, 150, 300]); } catch (e) {}
-}
-function drawDock() {
-  const nu = Date.now();
-  timers.forEach(t => { if (!t.klaar && nu >= t.eind) { t.klaar = true; piep(); } });
-  $("#dock").innerHTML = timers.map(t => {
-    const rest = Math.max(0, Math.round((t.eind - nu) / 1000));
-    const tijd = t.klaar ? "Klaar!" : `${Math.floor(rest / 3600) ? Math.floor(rest / 3600) + ":" : ""}${String(Math.floor(rest / 60) % 60).padStart(2, "0")}:${String(rest % 60).padStart(2, "0")}`;
-    return `<div class="tmr ${t.klaar ? "klaar" : ""}"><span>${esc(t.naam)}</span><b>${tijd}</b><button data-stop="${t.id}" aria-label="Wekker ${esc(t.naam)} stoppen">✕</button></div>`;
-  }).join("");
-  document.querySelectorAll("[data-stop]").forEach(b => b.onclick = () => {
-    timers.splice(timers.findIndex(t => String(t.id) === b.dataset.stop), 1); drawDock();
-  });
-  if (!timers.length) { clearInterval(tick); tick = null; }
-}
-
-/* ---------- Kookmodus ---------- */
-let stap = 0, lock = null;
-async function openCook(i) {
-  stap = i; $("#cook").hidden = false; document.body.style.overflow = "hidden"; drawCook();
-  try { lock = await navigator.wakeLock?.request("screen"); } catch (e) { lock = null; }
-  $("#cookNext").focus();
-}
-function closeCook() {
-  $("#cook").hidden = true; document.body.style.overflow = "";
-  try { lock?.release(); } catch (e) {} lock = null;
-}
-function drawCook() {
-  const r = huidig, s = r.stappen[stap];
-  $("#cookTitle").textContent = r.titel;
-  const namen = r.onderdelen.flatMap(o => o.items.map(i => i[2]));
-  const gebruikt = namen.filter(n => s.tekst.toLowerCase().includes(n.split(" ").slice(-1)[0].toLowerCase().replace(/'s$/, "")));
-  $("#cookMain").innerHTML = `
-    <div class="eyebrow">Stap ${stap + 1} van ${r.stappen.length}${s.tijd ? " · " + esc(s.tijd) : ""}</div>
-    <h2>${esc(s.kop)}</h2>
-    <p>${esc(s.tekst)}</p>
-    ${s.timer ? `<button class="timer-btn" id="cookTimer">${ICON_KLOK} Start wekker ${s.timer} min</button>` : ""}
-    ${gebruikt.length ? `<p class="cook-ing">Je gebruikt: ${gebruikt.map(esc).join(", ")}</p>` : ""}`;
-  if (s.timer) $("#cookTimer").onclick = () => startTimer(s);
-  $("#cookDots").innerHTML = r.stappen.map((_, i) => `<i class="${i <= stap ? "on" : ""}"></i>`).join("");
-  $("#cookPrev").disabled = stap === 0;
-  $("#cookNext").textContent = stap === r.stappen.length - 1 ? "Klaar, eet smakelijk" : "Volgende";
-}
-$("#cookPrev").onclick = () => { if (stap > 0) { stap--; drawCook(); } };
-$("#cookNext").onclick = () => { if (stap < huidig.stappen.length - 1) { stap++; drawCook(); } else closeCook(); };
-$("#cookClose").onclick = closeCook;
-document.addEventListener("keydown", e => {
-  if ($("#cook").hidden) return;
-  if (e.key === "ArrowRight") $("#cookNext").click();
-  if (e.key === "ArrowLeft") $("#cookPrev").click();
-  if (e.key === "Escape") closeCook();
-});
-
-/* ---------- Over ---------- */
-function over() {
-  return `<div class="spine"><section class="over"><div class="eyebrow">Over</div><h1>GARAJ</h1>${OVER.map(p => `<p>${esc(p)}</p>`).join("")}</section></div>`;
-}
-
-/* ---------- Router ---------- */
-function route() {
-  const id = (location.hash || "#home").slice(1);
-  const r = RECEPTEN.find(x => x.slug === id);
-  if (!$("#cook").hidden) closeCook();
-  if (r) { renderNav("recepten"); app.innerHTML = recept(r); bindRecept(); document.title = `${r.titel} · GARAJ`; }
-  else if (id === "recepten" || id === "zoeken" || gangVan(id) || id.startsWith("label-")) {
-    filter = { gang: gangVan(id) ? id : null, label: id.startsWith("label-") && LABELS[id.slice(6)] ? id.slice(6) : null, q: "" };
-    renderNav("recepten"); app.innerHTML = recepten(); bindRecepten(id === "zoeken"); document.title = "Recepten · GARAJ";
-  }
-  else if (id === "over" && OVER.length) { renderNav("over"); app.innerHTML = over(); document.title = "Over · GARAJ"; }
-  else { renderNav("home"); app.innerHTML = home(); document.title = "GARAJ Recepten"; }
-  window.scrollTo(0, 0);
-}
-$("#count").textContent = "GARAJ · Allemaal zelf gekookt";
-window.addEventListener("hashchange", route);
-route();
-
-/* ---------- App: installeren op het beginscherm ---------- */
-(() => {
-  if ("serviceWorker" in navigator && location.protocol === "https:") {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
-  }
-  const balk = $("#installbalk");
-  const opslag = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-                   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
-  const alGeinstalleerd = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-  const isMobiel = matchMedia("(max-width: 900px) and (pointer: coarse)").matches;
-  const weggeklikt = Number(opslag.get("garaj-install-nee") || 0);
-  const magTonen = !alGeinstalleerd && isMobiel && Date.now() - weggeklikt > 14 * 864e5;
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  let uitgesteld = null;
-
-  const toon = () => { if (magTonen) setTimeout(() => { balk.hidden = false; }, 2500); };
-  $("#ibNee").addEventListener("click", () => { balk.hidden = true; opslag.set("garaj-install-nee", String(Date.now())); });
-
-  window.addEventListener("beforeinstallprompt", e => {
-    e.preventDefault(); uitgesteld = e; toon();
-  });
-  $("#ibJa").addEventListener("click", async () => {
-    if (!uitgesteld) return;
-    balk.hidden = true; uitgesteld.prompt();
-    const keuze = await uitgesteld.userChoice.catch(() => null);
-    if (!keuze || keuze.outcome !== "accepted") opslag.set("garaj-install-nee", String(Date.now()));
-    uitgesteld = null;
-  });
-  window.addEventListener("appinstalled", () => { balk.hidden = true; toast("GARAJ staat op je beginscherm"); });
-
-  if (isIOS) {
-    balk.classList.add("ios");
-    $("#ibUitleg").innerHTML = 'Tik onderin op <b>Deel</b> <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> en kies <b>Zet op beginscherm</b>.';
-    toon();
-  }
-})();
-</script>
-
-</body></html>
+<script src="/recepten.js?v=2026-10-13.1"></script>
+<script src="/bouw.js?v=2026-10-13.1"></script>
+<script src="/app.js?v=2026-10-13.1"></script>
+</body>
+</html>

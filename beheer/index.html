@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GARAJ beheer</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script>try{var t=localStorage.getItem("garaj-thema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+  body { padding-bottom: 90px; }
+  .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); }
+  .bh-kop { border-bottom: 1px solid var(--lijn); background: var(--linnen); }
+  .bh-kop .wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 16px; }
+  .bh-kop h1 { font-size: 28px; margin-right: auto; }
+  .bh-kop a { font-weight: 600; color: var(--tomaat); text-decoration: none; }
+  .stappenplan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-block: 24px; }
+  .stappenplan div { background: var(--linnen); border: 1px solid var(--lijn); border-radius: 16px 16px 16px 40px; padding: 14px 18px; font-size: 15px; }
+  .stappenplan b { font: 500 12px var(--mono); color: var(--tomaat); letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  @media (max-width: 760px) { .stappenplan { grid-template-columns: minmax(0, 1fr); } }
+  .melding { background: var(--olijf-zacht); border-radius: 14px; padding: 12px 16px; margin-bottom: 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 15px; }
+  .melding button { border: 0; background: none; text-decoration: underline; color: var(--olijf); font-weight: 600; }
+  .bh { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .bh { grid-template-columns: minmax(0, 1fr); } }
+  .bh-lijst { position: sticky; top: 16px; display: grid; gap: 6px; }
+  @media (max-width: 900px) { .bh-lijst { position: static; } }
+  .bh-lijst button { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: center; text-align: left; border: 1px solid var(--lijn); background: var(--linnen); border-radius: 14px; padding: 6px 10px 6px 6px; font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .bh-lijst button[aria-current="true"] { border-color: var(--tomaat); box-shadow: inset 3px 0 0 var(--tomaat); }
+  .bh-lijst img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--lijn); }
+  .bh-lijst small { display: block; color: var(--rook); font-weight: 400; font-size: 12.5px; }
+  .bh-lijst .nieuw-knop { grid-template-columns: 1fr; text-align: center; padding: 12px; border-style: dashed; color: var(--tomaat); }
+  form { display: grid; gap: 22px; }
+  fieldset { border: 1px solid var(--lijn); border-radius: 22px 22px 22px 56px; padding: 20px 22px 24px; margin: 0; background: var(--linnen); display: grid; gap: 14px; min-width: 0; }
+  legend { font: 600 22px var(--display); padding: 0 8px; }
+  .veld { display: grid; gap: 5px; min-width: 0; }
+  .veld > span { font-weight: 600; font-size: 14.5px; }
+  .veld small, .uitleg { color: var(--rook); font-size: 13.5px; font-weight: 400; }
+  .rij2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 14px; }
+  input[type=text], input[type=number], input[type=date], select, textarea { width: 100%; font: inherit; font-size: 16px; color: var(--inkt); background: var(--creme); border: 1px solid var(--lijn); border-radius: 10px; padding: 9px 12px; }
+  textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--tomaat); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tomaat) 18%, transparent); }
+  .vinkjes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vinkjes label { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--lijn); background: var(--creme); border-radius: 999px; padding: 5px 12px; font-size: 14.5px; cursor: pointer; }
+  .vinkjes label:has(input:checked) { border-color: var(--olijf); background: var(--olijf-zacht); }
+  .vinkjes input { accent-color: var(--olijf); }
+  .foto-rij { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; align-items: center; }
+  .foto-rij img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; background: var(--lijn); }
+  .groep { border: 1px dashed var(--lijn); border-radius: 16px; padding: 14px; display: grid; gap: 8px; }
+  .ingr-rij { display: grid; grid-template-columns: 80px 110px minmax(0, 1.4fr) minmax(0, 1fr) 36px; gap: 6px; align-items: center; }
+  .ingr-kop { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--rook); }
+  @media (max-width: 640px) { .ingr-rij { grid-template-columns: 70px 90px minmax(0, 1fr) 36px; } .ingr-rij .i-x { grid-column: 1 / -2; } .ingr-kop { display: none; } }
+  .mini { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--lijn); background: var(--creme); font-size: 15px; display: grid; place-items: center; flex: none; }
+  .mini:hover { border-color: var(--tomaat); color: var(--tomaat); }
+  .klein { border: 1px solid var(--lijn); background: var(--creme); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; justify-self: start; }
+  .klein:hover { border-color: var(--tomaat); }
+  .stapform { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; border-bottom: 1px solid var(--lijn); padding-bottom: 14px; }
+  .stapform .nr { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--tomaat); color: var(--tomaat); display: grid; place-items: center; font: 500 14px var(--mono); }
+  .stapform .velden { display: grid; gap: 8px; min-width: 0; }
+  .stapform .knopjes { display: grid; gap: 4px; align-content: start; }
+  .fouten { background: var(--tomaat-zacht); border-radius: 14px; padding: 12px 18px; }
+  .fouten ul { margin: 6px 0 0; padding-left: 18px; }
+  .acties-bh { display: flex; flex-wrap: wrap; gap: 10px; }
+  .knop.gevaar { border-color: var(--tomaat); color: var(--tomaat); }
+  .voorbeeld { border: 2px solid var(--tomaat); border-radius: 26px; background: var(--creme); overflow: hidden; margin-top: 10px; }
+  .voorbeeld > .oog { padding: 10px 18px; background: var(--tomaat); color: #fff; }
+  .voorbeeld .acties, .voorbeeld .daarna, .voorbeeld .kruimel { display: none; }
+  .balk { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--vlak); color: var(--vlak-inkt); border-top: 2px solid var(--tomaat); padding: 12px 16px calc(env(safe-area-inset-bottom, 0px) + 12px); }
+  .balk .wrap { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .balk p { margin-right: auto; font-size: 15px; }
+  .balk .knop { border-color: var(--vlak-inkt); color: var(--vlak-inkt); }
+  .balk .knop.vol { border-color: var(--tomaat); color: #fff; }
+  .balk .knop:disabled { opacity: .4; cursor: default; transform: none; }
+  .klaar-paneel ol { padding-left: 20px; display: grid; gap: 8px; font-size: 15.5px; }
+  .klaar-paneel code { font: 13.5px var(--mono); background: var(--linnen); padding: 1px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header class="bh-kop"><div class="wrap"><h1>GARAJ beheer</h1><a href="/" target="_blank" rel="noopener">Bekijk de site ↗</a></div></header>
+<main class="wrap">
+  <div class="stappenplan">
+    <div><b>Stap 1</b>Kies een recept om te bewerken, of begin een nieuw recept.</div>
+    <div><b>Stap 2</b>Vul alles in, bekijk het voorbeeld en klik op <b style="display:inline;font:inherit;color:inherit;text-transform:none;letter-spacing:0">Recept bewaren</b>.</div>
+    <div><b>Stap 3</b>Download het websitepakket en zet de bestanden op GitHub. Klaar.</div>
+  </div>
+  <div id="melding"></div>
+  <div class="bh">
+    <nav class="bh-lijst" id="lijst" aria-label="Recepten"></nav>
+    <section id="werk" aria-live="polite"></section>
+  </div>
+</main>
+<div class="balk"><div class="wrap"><p id="status">Nog niets gewijzigd.</p><button class="knop vol" type="button" id="pakket" disabled>Download websitepakket</button></div></div>
+<div id="laag"></div>
+<div class="toast" id="toast" hidden role="status"></div>
+<datalist id="eenheden"><option value="g"><option value="kg"><option value="ml"><option value="dl"><option value="l"><option value="el"><option value="tl"><option value="snuf"><option value="naar wens"></datalist>
+<script src="/recepten.js"></script>
+<script src="/bouw.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="/beheer/beheer.js"></script>
+</body>
+</html>
